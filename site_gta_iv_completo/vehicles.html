@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os veículos de GTA IV, carros, motos, barcos e aeronaves de Liberty City">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, veículos, carros, motos, barcos, helicópteros, Liberty City">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Veículos - GTA IV</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando veículos de Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar veículos..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--vehicles" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Veículos de <span class="hero__title-highlight">GTA IV</span></h1>
+                    <p class="hero__subtitle">Carros, motos, barcos e aeronaves de Liberty City</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Introdução -->
+        <section class="vehicles-intro" id="intro">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Frota de Liberty City</h2>
+                    <p class="section-header__subtitle">Uma nova era de veículos em GTA</p>
+                </header>
+                
+                <div class="vehicles-intro__content" data-aos="fade-up">
+                    <div class="vehicles-intro__quote">
+                        <blockquote>"The car is the weapon of choice in Liberty City. Don't leave home without one."</blockquote>
+                        <cite>— Guia de Liberty City</cite>
+                    </div>
+                    
+                    <p class="vehicles-intro__text">GTA IV representou uma revolução na forma como os veículos são representados em jogos de mundo aberto. Utilizando o motor RAGE (Rockstar Advanced Game Engine) e a física Euphoria, os veículos de Liberty City oferecem uma experiência de condução mais realista e imersiva do que qualquer jogo anterior da série.</p>
+                    
+                    <p class="vehicles-intro__text">Cada veículo em GTA IV possui características únicas de manuseio, aceleração, velocidade máxima e resistência a danos. Os carros reagem de forma realista às condições da estrada, inclinando-se nas curvas, derrapando em superfícies molhadas e sofrendo deformações detalhadas em colisões. A suspensão é visível e reativa, os pneus podem estourar individualmente, e até mesmo o motor pode falhar após danos severos.</p>
+                    
+                    <p class="vehicles-intro__text">O jogo apresenta mais de 150 veículos diferentes, incluindo carros, motos, barcos, helicópteros e veículos especiais. Muitos são inspirados em modelos reais, adaptados com designs ligeiramente modificados e nomes fictícios para evitar problemas de licenciamento. A variedade é impressionante, desde carros esportivos de alto desempenho até utilitários robustos, veículos de emergência e raridades exclusivas.</p>
+                </div>
+                
+                <div class="vehicles-intro__stats">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 6l3 4h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a3 3 0 0 1-3 3 3 3 0 0 1-3-3H10a3 3 0 0 1-3 3 3 3 0 0 1-3-3H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h2l3-4h8z"/>
+                                <circle cx="7" cy="16" r="1"/>
+                                <circle cx="17" cy="16" r="1"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">104</div>
+                        <div class="stat-card__label">Carros</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 16v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1M4 12h16M2 8h20M12 4v4"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">12</div>
+                        <div class="stat-card__label">Motos</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 18h18M7 18l2-9h6l2 9M12 3v6"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">15</div>
+                        <div class="stat-card__label">Barcos</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 4v16M8 8h8M10 12h4M4 16h16"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">7</div>
+                        <div class="stat-card__label">Aeronaves</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Categorias de Veículos -->
+        <section class="vehicle-categories" id="categories">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Categorias de Veículos</h2>
+                    <p class="section-header__subtitle">Explore a diversidade da frota de Liberty City</p>
+                </header>
+                
+                <div class="categories-grid">
+                    <!-- Categoria: Carros Esportivos -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de carro esportivo -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Carros Esportivos</h3>
+                            <p class="category-card__description">Veículos de alto desempenho, com excelente aceleração e velocidade máxima. Ideais para fugas rápidas e corridas, mas geralmente com menor resistência a danos.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Infernus</span>
+                                <span class="vehicle-tag">Turismo</span>
+                                <span class="vehicle-tag">Comet</span>
+                                <span class="vehicle-tag">Coquette</span>
+                                <span class="vehicle-tag">Banshee</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Sedans -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de sedan -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Sedans</h3>
+                            <p class="category-card__description">Veículos de quatro portas com bom equilíbrio entre desempenho e durabilidade. Comuns nas ruas de Liberty City e ideais para o transporte de passageiros.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Schafter</span>
+                                <span class="vehicle-tag">Oracle</span>
+                                <span class="vehicle-tag">Sultan</span>
+                                <span class="vehicle-tag">Presidente</span>
+                                <span class="vehicle-tag">Admiral</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: SUVs e Caminhonetes -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de SUV -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">SUVs e Caminhonetes</h3>
+                            <p class="category-card__description">Veículos robustos com boa capacidade off-road e maior resistência a danos. Ideais para terrenos acidentados e situações que exigem força bruta.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Cavalcade</span>
+                                <span class="vehicle-tag">Huntley Sport</span>
+                                <span class="vehicle-tag">Patriot</span>
+                                <span class="vehicle-tag">Rancher</span>
+                                <span class="vehicle-tag">Bobcat</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Veículos Clássicos -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de carro clássico -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Veículos Clássicos</h3>
+                            <p class="category-card__description">Carros vintage com design retrô e características de manuseio únicas. Menos comuns nas ruas e geralmente com valor colecionável dentro do universo do jogo.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Virgo</span>
+                                <span class="vehicle-tag">Manana</span>
+                                <span class="vehicle-tag">Voodoo</span>
+                                <span class="vehicle-tag">Buccaneer</span>
+                                <span class="vehicle-tag">Sabre</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Motos -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de moto -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Motos</h3>
+                            <p class="category-card__description">Veículos de duas rodas que oferecem excelente aceleração e agilidade, mas com menor proteção para o condutor. Ideais para manobras rápidas em espaços apertados.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">NRG 900</span>
+                                <span class="vehicle-tag">PCJ 600</span>
+                                <span class="vehicle-tag">Faggio</span>
+                                <span class="vehicle-tag">Hakuchou</span>
+                                <span class="vehicle-tag">Double T</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Barcos -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de barco -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Barcos</h3>
+                            <p class="category-card__description">Veículos aquáticos que permitem explorar os rios e o oceano ao redor de Liberty City. Variam de pequenos botes a iates luxuosos e lanchas de alta velocidade.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Jetmax</span>
+                                <span class="vehicle-tag">Squalo</span>
+                                <span class="vehicle-tag">Tropic</span>
+                                <span class="vehicle-tag">Tug</span>
+                                <span class="vehicle-tag">Dinghy</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Aeronaves -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de helicóptero -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Aeronaves</h3>
+                            <p class="category-card__description">Helicópteros que permitem uma visão aérea de Liberty City. Diferente de outros jogos da série, GTA IV não possui aviões pilotáveis, apenas helicópteros.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Annihilator</span>
+                                <span class="vehicle-tag">Maverick</span>
+                                <span class="vehicle-tag">Swift</span>
+                                <span class="vehicle-tag">Buzzard</span>
+                                <span class="vehicle-tag">Helitours</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Veículos de Serviço -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="800">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de veículo de serviço -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Veículos de Serviço</h3>
+                            <p class="category-card__description">Veículos utilizados por serviços públicos e empresas, incluindo táxis, caminhões de lixo, ônibus e veículos de construção. Geralmente mais lentos, mas com características únicas.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Taxi</span>
+                                <span class="vehicle-tag">Bus</span>
+                                <span class="vehicle-tag">Trashmaster</span>
+                                <span class="vehicle-tag">Flatbed</span>
+                                <span class="vehicle-tag">Ripley</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Categoria: Veículos de Emergência -->
+                    <div class="category-card" data-aos="fade-up" data-aos-delay="900">
+                        <div class="category-card__image">
+                            <!-- Placeholder para imagem de veículo de emergência -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="category-card__content">
+                            <h3 class="category-card__name">Veículos de Emergência</h3>
+                            <p class="category-card__description">Veículos utilizados por forças policiais, bombeiros e serviços médicos. Equipados com sirenes e luzes, oferecem recursos especiais como a capacidade de iniciar missões secundárias.</p>
+                            <div class="category-card__examples">
+                                <span class="vehicle-tag">Police Cruiser</span>
+                                <span class="vehicle-tag">Police Patrol</span>
+                                <span class="vehicle-tag">Enforcer</span>
+                                <span class="vehicle-tag">Ambulance</span>
+                                <span class="vehicle-tag">Fire Truck</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Veículos Destacados -->
+        <section class="featured-vehicles" id="featured">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Veículos Destacados</h2>
+                    <p class="section-header__subtitle">Os mais icônicos de Liberty City</p>
+                </header>
+                
+                <div class="featured-slider" data-aos="fade-up">
+                    <!-- Controles do slider -->
+                    <button class="slider-control slider-control--prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="featured-slider__container">
+                        <!-- Infernus -->
+                        <div class="featured-vehicle">
+                            <div class="featured-vehicle__image">
+                                <!-- Placeholder para imagem do Infernus -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="featured-vehicle__content">
+                                <h3 class="featured-vehicle__name">Infernus</h3>
+                                <div class="featured-vehicle__manufacturer">Pegassi</div>
+                                <div class="featured-vehicle__inspiration">Inspirado em: Lamborghini Murciélago</div>
+                                
+                                <div class="featured-vehicle__stats">
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Velocidade</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Aceleração</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Manuseio</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Resistência</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="featured-vehicle__description">O Infernus é um dos carros mais rápidos e desejados de GTA IV. Este superesportivo de motor central traseiro oferece aceleração explosiva e velocidade máxima impressionante, mas requer habilidade para controlar devido à sua tendência a derrapar em curvas fechadas. Seu design exótico e portas tesoura o tornam instantaneamente reconhecível.</p>
+                                
+                                <div class="featured-vehicle__locations">
+                                    <h4>Onde encontrar:</h4>
+                                    <ul>
+                                        <li>Estacionado ocasionalmente em Middle Park East, Algonquin</li>
+                                        <li>Na missão "Buoys Ahoy" para Bernie Crane</li>
+                                        <li>Na garagem de Bryce Dawkins após completar todas as missões de Bernie</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sultan RS -->
+                        <div class="featured-vehicle">
+                            <div class="featured-vehicle__image">
+                                <!-- Placeholder para imagem do Sultan RS -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="featured-vehicle__content">
+                                <h3 class="featured-vehicle__name">Sultan RS</h3>
+                                <div class="featured-vehicle__manufacturer">Karin</div>
+                                <div class="featured-vehicle__inspiration">Inspirado em: Subaru Impreza WRX STI</div>
+                                
+                                <div class="featured-vehicle__stats">
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Velocidade</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Aceleração</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Manuseio</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Resistência</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="featured-vehicle__description">O Sultan RS é uma versão esportiva e altamente modificada do sedan Sultan. Com tração nas quatro rodas, oferece excelente aderência em qualquer superfície e um manuseio preciso que o torna ideal para corridas de rua. Seu motor turbo produz um som distintivo e sua aceleração é uma das melhores do jogo.</p>
+                                
+                                <div class="featured-vehicle__locations">
+                                    <h4>Onde encontrar:</h4>
+                                    <ul>
+                                        <li>Estacionado em frente ao apartamento de Brucie em East Hook, Broker</li>
+                                        <li>Ocasionalmente encontrado em Alderney City, Alderney</li>
+                                        <li>Raramente visto circulando pelas ruas de Algonquin</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comet -->
+                        <div class="featured-vehicle">
+                            <div class="featured-vehicle__image">
+                                <!-- Placeholder para imagem do Comet -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="featured-vehicle__content">
+                                <h3 class="featured-vehicle__name">Comet</h3>
+                                <div class="featured-vehicle__manufacturer">Pfister</div>
+                                <div class="featured-vehicle__inspiration">Inspirado em: Porsche 911 (997)</div>
+                                
+                                <div class="featured-vehicle__stats">
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Velocidade</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 88%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Aceleração</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Manuseio</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Resistência</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 70%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="featured-vehicle__description">O Comet é um esportivo de luxo com motor traseiro que oferece um equilíbrio perfeito entre desempenho e refinamento. Seu manuseio preciso e estabilidade em alta velocidade o tornam um dos carros mais agradáveis de dirigir em GTA IV. A tração traseira pode causar derrapagens, mas o carro é facilmente controlável mesmo em curvas fechadas.</p>
+                                
+                                <div class="featured-vehicle__locations">
+                                    <h4>Onde encontrar:</h4>
+                                    <ul>
+                                        <li>Estacionado em frente ao apartamento de Brucie após completar suas corridas</li>
+                                        <li>Frequentemente encontrado em Middle Park East e Suffolk, Algonquin</li>
+                                        <li>Disponível para roubo durante a missão "No. 1" para Brucie</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FIB Buffalo -->
+                        <div class="featured-vehicle">
+                            <div class="featured-vehicle__image">
+                                <!-- Placeholder para imagem do FIB Buffalo -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="featured-vehicle__content">
+                                <h3 class="featured-vehicle__name">FIB Buffalo</h3>
+                                <div class="featured-vehicle__manufacturer">Bravado</div>
+                                <div class="featured-vehicle__inspiration">Inspirado em: Dodge Charger SRT-8</div>
+                                
+                                <div class="featured-vehicle__stats">
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Velocidade</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 82%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Aceleração</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Manuseio</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Resistência</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="featured-vehicle__description">O FIB Buffalo é uma versão especial do Buffalo utilizada pelo Federal Investigation Bureau (paródia do FBI). Este sedan esportivo combina velocidade, aceleração e resistência, tornando-o ideal para perseguições. Equipado com sirenes e luzes, é um dos veículos de emergência mais rápidos do jogo.</p>
+                                
+                                <div class="featured-vehicle__locations">
+                                    <h4>Onde encontrar:</h4>
+                                    <ul>
+                                        <li>Durante as missões "Final Interview" e "Three Leaf Clover"</li>
+                                        <li>Ocasionalmente patrulhando em níveis de procurado 4 estrelas ou mais</li>
+                                        <li>Raramente estacionado perto do edifício do FIB em Algonquin</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- NRG 900 -->
+                        <div class="featured-vehicle">
+                            <div class="featured-vehicle__image">
+                                <!-- Placeholder para imagem do NRG 900 -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="featured-vehicle__content">
+                                <h3 class="featured-vehicle__name">NRG 900</h3>
+                                <div class="featured-vehicle__manufacturer">Shitzu</div>
+                                <div class="featured-vehicle__inspiration">Inspirado em: Suzuki GSX-R</div>
+                                
+                                <div class="featured-vehicle__stats">
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Velocidade</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 98%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Aceleração</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Manuseio</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                    <div class="vehicle-stat">
+                                        <span class="vehicle-stat__label">Resistência</span>
+                                        <div class="vehicle-stat__bar">
+                                            <div class="vehicle-stat__fill" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="featured-vehicle__description">O NRG 900 é a moto esportiva mais rápida de GTA IV, capaz de atingir velocidades impressionantes e com aceleração explosiva. Sua agilidade permite manobras rápidas em espaços apertados, tornando-a ideal para fugas em áreas congestionadas. No entanto, sua alta velocidade a torna difícil de controlar e qualquer colisão pode ser fatal.</p>
+                                
+                                <div class="featured-vehicle__locations">
+                                    <h4>Onde encontrar:</h4>
+                                    <ul>
+                                        <li>Estacionada ocasionalmente em Westdyke, Alderney</li>
+                                        <li>Frequentemente encontrada em Algonquin, especialmente em Star Junction</li>
+                                        <li>Disponível para compra no site Autoeroticar.com após completar todas as corridas de Brucie</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="slider-control slider-control--next" aria-label="Próximo">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Física e Danos -->
+        <section class="physics" id="physics">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Física e Sistema de Danos</h2>
+                    <p class="section-header__subtitle">Realismo revolucionário</p>
+                </header>
+                
+                <div class="physics__content">
+                    <div class="physics__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de danos em veículos -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="physics__info" data-aos="fade-left">
+                        <p class="physics__text">GTA IV revolucionou a física de veículos em jogos de mundo aberto, introduzindo um sistema de danos detalhado e comportamento realista. Utilizando o motor RAGE (Rockstar Advanced Game Engine) em conjunto com a física Euphoria, os veículos reagem de forma convincente às forças aplicadas, condições da estrada e colisões.</p>
+                        
+                        <div class="physics__features">
+                            <div class="physics-feature">
+                                <h3 class="physics-feature__title">Suspensão Realista</h3>
+                                <p class="physics-feature__description">Cada veículo possui um sistema de suspensão visível e reativo que responde ao terreno e às manobras. Carros inclinam-se nas curvas, mergulham durante frenagens bruscas e levantam a frente durante acelerações intensas. A suspensão pode ser danificada, afetando permanentemente o manuseio do veículo.</p>
+                            </div>
+                            
+                            <div class="physics-feature">
+                                <h3 class="physics-feature__title">Deformação Detalhada</h3>
+                                <p class="physics-feature__description">Os veículos sofrem deformações realistas em colisões, com amassados, vidros quebrados e peças soltas. Cada painel da carroceria pode ser danificado independentemente, e impactos fortes podem desalinhar rodas, danificar a suspensão ou até mesmo deformar o chassi, afetando permanentemente o desempenho.</p>
+                            </div>
+                            
+                            <div class="physics-feature">
+                                <h3 class="physics-feature__title">Danos Mecânicos</h3>
+                                <p class="physics-feature__description">Além dos danos visuais, os veículos sofrem danos mecânicos que afetam seu funcionamento. O motor pode falhar após impactos severos, fazendo o veículo engasgar ou até parar completamente. Pneus podem estourar individualmente, afetando drasticamente o manuseio e a tração. Danos ao sistema de direção podem tornar o veículo difícil de controlar.</p>
+                            </div>
+                            
+                            <div class="physics-feature">
+                                <h3 class="physics-feature__title">Condições Ambientais</h3>
+                                <p class="physics-feature__description">As condições climáticas afetam significativamente o comportamento dos veículos. Em dias chuvosos, as ruas molhadas reduzem a tração, aumentando a tendência a derrapagens. Diferentes superfícies oferecem níveis variados de aderência, com asfalto proporcionando boa tração e terra ou grama reduzindo o controle.</p>
+                            </div>
+                            
+                            <div class="physics-feature">
+                                <h3 class="physics-feature__title">Inércia e Peso</h3>
+                                <p class="physics-feature__description">Os veículos têm massa e inércia realistas, com veículos maiores e mais pesados sendo mais difíceis de manobrar, mas oferecendo maior estabilidade em alta velocidade. Carros esportivos leves são ágeis, mas podem perder o controle mais facilmente. O peso também afeta a capacidade de subir encostas e a flutuabilidade na água.</p>
+                            </div>
+                        </div>
+                        
+                        <p class="physics__text">Este sistema de física avançado não apenas aumenta o realismo visual, mas também afeta diretamente a jogabilidade. Jogadores precisam adaptar seu estilo de direção às condições da estrada, ao estado do veículo e às suas características específicas. Um carro severamente danificado pode se tornar quase impossível de controlar, adicionando consequências tangíveis às colisões e incentivando uma direção mais cuidadosa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Veículos Especiais -->
+        <section class="special-vehicles" id="special">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Veículos Especiais</h2>
+                    <p class="section-header__subtitle">Raridades e exclusividades</p>
+                </header>
+                
+                <div class="special-vehicles__grid">
+                    <!-- Roman's Taxi -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="100">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do táxi de Roman -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Táxi de Roman</h3>
+                            <p class="special-vehicle__description">Um Esperanto preto personalizado usado como táxi pela empresa de Roman Bellic. Diferente dos táxis amarelos comuns, este veículo possui um desempenho ligeiramente melhor e uma aparência única. Após ligar para Roman solicitando um táxi, este veículo aparecerá para buscar Niko em qualquer local da cidade, oferecendo viagens gratuitas.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Disponível através do serviço de táxi de Roman após restaurar sua empresa. Não pode ser guardado permanentemente em garagens.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Annihilator -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="200">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do Annihilator -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Annihilator</h3>
+                            <p class="special-vehicle__description">Um helicóptero de ataque militar baseado no Sikorsky UH-60 Black Hawk. Equipado com quatro metralhadoras, é o único veículo armado pilotável em GTA IV. Apesar de seu tamanho, é surpreendentemente ágil e rápido, tornando-o ideal para atravessar Liberty City rapidamente ou para situações de combate.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Disponível no heliporto do East Holland Police Station em Algonquin após completar a missão "Out of Commission" ou "A Revenger's Tragedy". Também pode ser encontrado no Francis International Airport após atingir 6 estrelas de procurado.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Presidente -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="300">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do Presidente -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Presidente</h3>
+                            <p class="special-vehicle__description">Uma limusine de luxo baseada no Maybach 62. Este sedan executivo oferece excelente conforto e um interior luxuoso, com desempenho surpreendentemente bom para seu tamanho. É um dos veículos mais raros do jogo, aparecendo apenas em momentos específicos da história.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Disponível durante a missão "Final Interview" para Francis McReary. Também pode ser encontrado raramente em Star Junction, Algonquin, ou estacionado na mansão de Bryce Dawkins em Alderney após completar todas as missões de Bernie Crane.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cognoscenti -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="400">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do Cognoscenti -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Cognoscenti</h3>
+                            <p class="special-vehicle__description">Um sedan de luxo baseado no Bentley Continental Flying Spur. Combina elegância, conforto e desempenho, com um motor potente e acabamento de primeira classe. É o veículo preferido de criminosos de alto escalão e políticos corruptos em Liberty City.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Utilizado por Dimitri Rascalov e Jimmy Pegorino em várias missões. Pode ser encontrado estacionado ocasionalmente em Alderney City e em Middle Park East, Algonquin. Uma versão blindada aparece na missão "Trespass".</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Jetmax -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="500">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do Jetmax -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Jetmax</h3>
+                            <p class="special-vehicle__description">Uma lancha de alta velocidade inspirada em barcos offshore de corrida. É o barco mais rápido de GTA IV, capaz de atingir velocidades impressionantes e com excelente manuseio mesmo em águas agitadas. Seu design elegante e aerodinâmico o torna um dos veículos aquáticos mais desejáveis do jogo.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Utilizado na missão "Catch the Wave" para Phil Bell. Pode ser encontrado atracado no píer de East Hook em Broker, no Pier 45 em Algonquin, e ocasionalmente navegando ao redor de Happiness Island.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Airtug -->
+                    <div class="special-vehicle" data-aos="fade-up" data-aos-delay="600">
+                        <div class="special-vehicle__image">
+                            <!-- Placeholder para imagem do Airtug -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="special-vehicle__content">
+                            <h3 class="special-vehicle__name">Airtug</h3>
+                            <p class="special-vehicle__description">Um pequeno veículo de serviço aeroportuário usado para rebocar aeronaves. É extremamente lento, com velocidade máxima de apenas 30 km/h, mas possui excelente manuseio e capacidade de fazer curvas fechadas. Apesar de suas limitações, é um veículo único e divertido de dirigir.</p>
+                            <div class="special-vehicle__availability">
+                                <h4>Disponibilidade:</h4>
+                                <p>Encontrado exclusivamente no Francis International Airport em Dukes. Tentar entrar no aeroporto com níveis de procurado resultará em perseguição policial, tornando este veículo difícil de obter.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Customização -->
+        <section class="customization" id="customization">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Customização de Veículos</h2>
+                    <p class="section-header__subtitle">Limitada, mas presente</p>
+                </header>
+                
+                <div class="customization__content" data-aos="fade-up">
+                    <p class="customization__text">Diferente de outros jogos da série como GTA: San Andreas e GTA V, GTA IV oferece opções limitadas de customização de veículos. Não existem oficinas dedicadas à modificação estética ou de desempenho, mas ainda há algumas formas de personalizar sua experiência com veículos:</p>
+                    
+                    <div class="customization__options">
+                        <div class="customization-option">
+                            <div class="customization-option__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2v20M17 5H7M17 19H7"/>
+                                </svg>
+                            </div>
+                            <div class="customization-option__content">
+                                <h3 class="customization-option__title">Pay 'n' Spray</h3>
+                                <p class="customization-option__description">As oficinas Pay 'n' Spray permitem repintar qualquer veículo, reparar danos e remover níveis de procurado. Existem várias espalhadas por Liberty City, incluindo locais em Broker, Algonquin e Alderney. Cada repintura custa $100 e o veículo receberá uma cor aleatória.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="customization-option">
+                            <div class="customization-option__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 8v8M8 12h8"/>
+                                </svg>
+                            </div>
+                            <div class="customization-option__content">
+                                <h3 class="customization-option__title">Veículos Pré-Modificados</h3>
+                                <p class="customization-option__description">Alguns veículos aparecem com modificações de fábrica, como o Sultan RS (versão esportiva do Sultan) e o Hakuchou (versão personalizada da moto PCJ 600). Estes veículos são raros e geralmente possuem melhor desempenho que suas contrapartes padrão.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="customization-option">
+                            <div class="customization-option__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                </svg>
+                            </div>
+                            <div class="customization-option__content">
+                                <h3 class="customization-option__title">Rádio e Buzina</h3>
+                                <p class="customization-option__description">Embora não seja uma customização física, você pode personalizar sua experiência selecionando entre as várias estações de rádio disponíveis em cada veículo. Cada estação tem seu próprio estilo musical e programação, desde rock clássico até hip-hop e música eletrônica.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="customization-option">
+                            <div class="customization-option__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                    <polyline points="9 22 9 12 15 12 15 22"/>
+                                </svg>
+                            </div>
+                            <div class="customization-option__content">
+                                <h3 class="customization-option__title">Garagens Seguras</h3>
+                                <p class="customization-option__description">Embora não seja tecnicamente customização, as garagens seguras permitem armazenar veículos para uso posterior. Cada apartamento de Niko possui uma garagem onde é possível guardar veículos favoritos. Veículos armazenados persistem mesmo após missões ou reiniciar o jogo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="customization__note">A abordagem minimalista à customização em GTA IV foi uma decisão de design deliberada, alinhada com o tom mais sério e realista do jogo. Em vez de focar em modificações extravagantes, o jogo enfatiza a física realista e o comportamento único de cada veículo, incentivando os jogadores a apreciar as diferenças sutis entre os diversos modelos disponíveis.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Rádio -->
+        <section class="radio" id="radio">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Rádio de Veículos</h2>
+                    <p class="section-header__subtitle">A trilha sonora de Liberty City</p>
+                </header>
+                
+                <div class="radio__content">
+                    <div class="radio__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de rádio -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="radio__info" data-aos="fade-left">
+                        <p class="radio__text">Uma característica icônica da série GTA, o sistema de rádio em veículos retorna em GTA IV com uma seleção diversificada de estações, cada uma com seu próprio estilo musical, DJs e comerciais. A trilha sonora contribui significativamente para a atmosfera do jogo e a experiência de dirigir pelas ruas de Liberty City.</p>
+                        
+                        <div class="radio__stations">
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">Liberty Rock Radio 97.8</h3>
+                                <div class="radio-station__host">DJ: Iggy Pop</div>
+                                <div class="radio-station__genre">Gênero: Classic Rock, Hard Rock</div>
+                                <p class="radio-station__description">Inspirada na Q104.3 de Nova York, esta estação toca rock clássico dos anos 70 e 80, com artistas como Queen, The Who, Genesis, Black Sabbath e R.E.M.</p>
+                            </div>
+                            
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">Radio Broker</h3>
+                                <div class="radio-station__host">DJ: Juliette Lewis</div>
+                                <div class="radio-station__genre">Gênero: Indie Rock, Alternative</div>
+                                <p class="radio-station__description">Focada em música indie e alternativa, esta estação representa a cena hipster de Broker (Brooklyn), com bandas como The Rapture, Vampire Weekend e LCD Soundsystem.</p>
+                            </div>
+                            
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">The Beat 102.7</h3>
+                                <div class="radio-station__host">DJs: DJ Green Lantern, Mister Cee</div>
+                                <div class="radio-station__genre">Gênero: Hip-Hop, Rap</div>
+                                <p class="radio-station__description">Inspirada na Hot 97 de Nova York, esta estação toca hip-hop contemporâneo, com artistas como Kanye West, Nas, Swizz Beatz e Busta Rhymes.</p>
+                            </div>
+                            
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">The Vibe 98.8</h3>
+                                <div class="radio-station__host">DJ: Vaughn Harper</div>
+                                <div class="radio-station__genre">Gênero: Soul, R&B</div>
+                                <p class="radio-station__description">Uma estação de R&B e soul, tocando artistas como R. Kelly, Mtume, The Isley Brothers e Ne-Yo. Perfeita para cruzeiros noturnos por Algonquin.</p>
+                            </div>
+                            
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">K109 The Studio</h3>
+                                <div class="radio-station__host">DJ: Karl Lagerfeld</div>
+                                <div class="radio-station__genre">Gênero: Disco</div>
+                                <p class="radio-station__description">Uma estação de música disco que homenageia a era das discotecas, com clássicos de Stephanie Mills, Creme D'Cocoa e Electrik Funk.</p>
+                            </div>
+                            
+                            <div class="radio-station">
+                                <h3 class="radio-station__name">WKTT Radio</h3>
+                                <div class="radio-station__host">Vários</div>
+                                <div class="radio-station__genre">Gênero: Talk Radio</div>
+                                <p class="radio-station__description">Uma estação de talk radio conservadora que satiriza programas como The Rush Limbaugh Show, com segmentos humorísticos e comentários políticos exagerados.</p>
+                            </div>
+                        </div>
+                        
+                        <p class="radio__text">Além destas, o jogo inclui várias outras estações como Vladivostok FM (música do Leste Europeu), San Juan Sounds (música latina), Fusion FM (jazz fusion), Massive B Soundsystem (dancehall/reggae), IF99 (funk/dance) e The Journey (ambient/chillout). Cada estação não apenas toca música, mas também apresenta comerciais fictícios, notícias e comentários dos DJs que refletem a sátira social característica da série GTA.</p>
+                        
+                        <p class="radio__text">A trilha sonora de GTA IV foi cuidadosamente curada para refletir a diversidade cultural de Liberty City e complementar a experiência de jogo. A música muda dinamicamente durante missões importantes, adicionando tensão e emoção aos momentos cruciais da história.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Dicas de Direção -->
+        <section class="driving-tips" id="tips">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Dicas de Direção</h2>
+                    <p class="section-header__subtitle">Dominando as ruas de Liberty City</p>
+                </header>
+                
+                <div class="tips-grid">
+                    <!-- Dica 1 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Antecipe as Curvas</h3>
+                            <p class="tip-card__description">Devido à física realista, é importante começar a frear antes de entrar nas curvas, não durante. Reduza a velocidade, posicione o veículo e então acelere suavemente ao sair da curva. Veículos com tração traseira tendem a derrapar mais facilmente, enquanto veículos com tração nas quatro rodas oferecem melhor aderência.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 2 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Utilize o Freio de Mão</h3>
+                            <p class="tip-card__description">O freio de mão (handbrake) é essencial para curvas fechadas em alta velocidade. Ao se aproximar da curva, solte o acelerador, pressione brevemente o freio de mão enquanto vira na direção desejada, e então acelere novamente. Esta técnica, conhecida como "powerslide", é particularmente eficaz com carros esportivos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 3 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Adapte-se às Condições Climáticas</h3>
+                            <p class="tip-card__description">Em dias chuvosos, a aderência dos pneus é significativamente reduzida. Dirija mais devagar, evite acelerações bruscas e mantenha maior distância para frenagem. Veículos com tração nas quatro rodas, como o Sultan RS, oferecem melhor desempenho em condições de baixa aderência.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 4 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Escolha o Veículo Certo</h3>
+                            <p class="tip-card__description">Diferentes situações exigem diferentes veículos. Para perseguições em alta velocidade, carros esportivos como o Comet ou o Turismo são ideais. Para terrenos acidentados, prefira SUVs como o Cavalcade. Para missões que exigem discrição, sedans de aparência comum como o Merit são mais adequados.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 5 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Cuide do Seu Veículo</h3>
+                            <p class="tip-card__description">Veículos severamente danificados têm desempenho comprometido e podem falhar em momentos críticos. Visite regularmente um Pay 'n' Spray para reparar danos, especialmente antes de missões importantes. Evite dirigir com pneus furados, pois isso afeta drasticamente o manuseio.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 6 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Domine as Motos</h3>
+                            <p class="tip-card__description">Motos oferecem excelente aceleração e agilidade, mas exigem mais habilidade. Incline-se nas curvas pressionando levemente o analógico na direção desejada. Evite colisões a todo custo, pois Niko será facilmente ejetado. Em compensação, motos são ideais para fugas em áreas congestionadas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Explore as Missões de GTA IV</h2>
+                    <p class="cta__text">Descubra as missões principais, secundárias e atividades que você pode realizar em Liberty City.</p>
+                    <div class="cta__actions">
+                        <a href="missions.html" class="btn btn--primary btn--large">Ver Missões</a>
+                        <a href="gallery.html" class="btn btn--outline btn--large">Explorar Galeria</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

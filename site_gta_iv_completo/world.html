@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore o mundo aberto de GTA IV, Liberty City e seus distritos">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, Liberty City, mundo aberto, Algonquin, Broker, Dukes, Bohan, Alderney">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Mundo Aberto - GTA IV</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar em Liberty City..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--world" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Liberty City</h1>
+                    <p class="hero__subtitle">A cidade que nunca dorme no universo de GTA IV</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Introdução -->
+        <section class="world-intro" id="intro">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Bem-vindo a Liberty City</h2>
+                    <p class="section-header__subtitle">A metrópole inspirada em Nova York</p>
+                </header>
+                
+                <div class="world-intro__content" data-aos="fade-up">
+                    <div class="world-intro__quote">
+                        <blockquote>"Liberty City is where the American Dream goes to die."</blockquote>
+                        <cite>— Niko Bellic</cite>
+                    </div>
+                    
+                    <p class="world-intro__text">Liberty City em GTA IV é uma recriação detalhada e estilizada de Nova York, apresentando uma versão mais realista e densa do que nas iterações anteriores da série. A cidade é composta por quatro dos cinco distritos principais de Nova York (Manhattan, Brooklyn, Queens e Bronx), renomeados como Algonquin, Broker, Dukes e Bohan, respectivamente. Além disso, há o estado vizinho de Alderney, inspirado em Nova Jersey.</p>
+                    
+                    <p class="world-intro__text">Com uma área total menor que San Andreas de GTA V, Liberty City compensa em densidade e detalhes. Cada esquina da cidade foi meticulosamente projetada para refletir a atmosfera única de Nova York, desde os arranha-céus imponentes de Algonquin até os bairros industriais de Bohan. A cidade é repleta de marcos reconhecíveis, como o Rotterdam Tower (Empire State Building), Statue of Happiness (Estátua da Liberdade) e Middle Park (Central Park).</p>
+                    
+                    <p class="world-intro__text">O que torna Liberty City tão especial é a sensação de vida e autenticidade. As ruas estão sempre movimentadas com pedestres que interagem entre si e com o ambiente. O clima dinâmico afeta a jogabilidade e a atmosfera, com chuva criando superfícies escorregadias e névoa reduzindo a visibilidade. A cidade muda ao longo do dia, com diferentes padrões de tráfego, atividades de pedestres e iluminação, criando uma experiência imersiva e realista.</p>
+                </div>
+                
+                <div class="world-intro__stats">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">5</div>
+                        <div class="stat-card__label">Distritos</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">82</div>
+                        <div class="stat-card__label">Bairros</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">15</div>
+                        <div class="stat-card__label">Pontes</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">8.27</div>
+                        <div class="stat-card__label">km²</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Mapa Interativo -->
+        <section class="interactive-map" id="map">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Mapa de Liberty City</h2>
+                    <p class="section-header__subtitle">Explore os distritos e bairros</p>
+                </header>
+                
+                <div class="map-container" data-aos="zoom-in">
+                    <!-- Placeholder para mapa interativo -->
+                    <div class="map-placeholder">
+                        <div class="map-placeholder__inner"></div>
+                    </div>
+                    
+                    <div class="map-controls">
+                        <button class="map-control" data-district="algonquin">Algonquin</button>
+                        <button class="map-control" data-district="broker">Broker</button>
+                        <button class="map-control" data-district="dukes">Dukes</button>
+                        <button class="map-control" data-district="bohan">Bohan</button>
+                        <button class="map-control" data-district="alderney">Alderney</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Distritos -->
+        <section class="districts" id="districts">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Distritos</h2>
+                    <p class="section-header__subtitle">As regiões que compõem Liberty City</p>
+                </header>
+                
+                <!-- Algonquin -->
+                <div class="district" id="algonquin">
+                    <div class="district__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de Algonquin -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="district__content" data-aos="fade-left">
+                        <h3 class="district__name">Algonquin</h3>
+                        <div class="district__inspiration">Inspirado em: Manhattan</div>
+                        
+                        <p class="district__description">O coração de Liberty City, Algonquin é o distrito mais densamente povoado e o centro financeiro da cidade. Dominado por arranha-céus imponentes, especialmente em Downtown e Midtown, este distrito representa o poder econômico e a opulência de Liberty City.</p>
+                        
+                        <p class="district__description">Algonquin abriga alguns dos marcos mais icônicos da cidade, como o Rotterdam Tower, Middle Park, Star Junction (Times Square) e o Libertonian Museum. O distrito é dividido pela Columbus Avenue, que corre de norte a sul, e pela Nickel Street, que atravessa de leste a oeste.</p>
+                        
+                        <div class="district__highlights">
+                            <h4 class="district__highlights-title">Destaques:</h4>
+                            <ul class="district__highlights-list">
+                                <li>Rotterdam Tower - O arranha-céu mais alto da cidade, inspirado no Empire State Building</li>
+                                <li>Middle Park - Uma grande área verde no centro de Algonquin, baseada no Central Park</li>
+                                <li>Star Junction - A versão de GTA IV da Times Square, com seus enormes painéis luminosos</li>
+                                <li>The Exchange - O distrito financeiro, equivalente a Wall Street</li>
+                                <li>Happiness Island - Pequena ilha ao sul de Algonquin onde se encontra a Statue of Happiness</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="district__neighborhoods">
+                            <h4 class="district__neighborhoods-title">Bairros:</h4>
+                            <div class="neighborhood-tags">
+                                <span class="neighborhood-tag">Castle Garden City</span>
+                                <span class="neighborhood-tag">Chinatown</span>
+                                <span class="neighborhood-tag">City Hall</span>
+                                <span class="neighborhood-tag">East Holland</span>
+                                <span class="neighborhood-tag">Easton</span>
+                                <span class="neighborhood-tag">Fishmarket North</span>
+                                <span class="neighborhood-tag">Fishmarket South</span>
+                                <span class="neighborhood-tag">Happiness Island</span>
+                                <span class="neighborhood-tag">Hatton Gardens</span>
+                                <span class="neighborhood-tag">Lancaster</span>
+                                <span class="neighborhood-tag">Little Italy</span>
+                                <span class="neighborhood-tag">Lower Easton</span>
+                                <span class="neighborhood-tag">Middle Park</span>
+                                <span class="neighborhood-tag">Middle Park East</span>
+                                <span class="neighborhood-tag">Middle Park West</span>
+                                <span class="neighborhood-tag">North Holland</span>
+                                <span class="neighborhood-tag">Northwood</span>
+                                <span class="neighborhood-tag">Presidents City</span>
+                                <span class="neighborhood-tag">Purgatory</span>
+                                <span class="neighborhood-tag">Star Junction</span>
+                                <span class="neighborhood-tag">Suffolk</span>
+                                <span class="neighborhood-tag">The Exchange</span>
+                                <span class="neighborhood-tag">The Meat Quarter</span>
+                                <span class="neighborhood-tag">The Triangle</span>
+                                <span class="neighborhood-tag">Westminster</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Broker -->
+                <div class="district" id="broker">
+                    <div class="district__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de Broker -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="district__content" data-aos="fade-left">
+                        <h3 class="district__name">Broker</h3>
+                        <div class="district__inspiration">Inspirado em: Brooklyn</div>
+                        
+                        <p class="district__description">Broker é um distrito industrial e residencial localizado no sudeste de Liberty City. É onde Niko Bellic começa sua jornada na cidade, morando inicialmente no apartamento de seu primo Roman em Hove Beach. O distrito é caracterizado por uma mistura de áreas industriais, bairros residenciais de classe média e comunidades de imigrantes.</p>
+                        
+                        <p class="district__description">Broker é conectado a Algonquin pela Broker Bridge (inspirada na Brooklyn Bridge) e a Dukes pela Algonquin-Dukes Expressway. O distrito tem uma atmosfera mais suburbana em comparação com o agitado Algonquin, com ruas mais largas e edifícios mais baixos.</p>
+                        
+                        <div class="district__highlights">
+                            <h4 class="district__highlights-title">Destaques:</h4>
+                            <ul class="district__highlights-list">
+                                <li>Broker Bridge - Uma ponte icônica que conecta Broker a Algonquin</li>
+                                <li>Firefly Island - Um parque de diversões abandonado inspirado em Coney Island</li>
+                                <li>Hove Beach - Um bairro de imigrantes do Leste Europeu onde Roman tem seu apartamento</li>
+                                <li>BOABO (Beneath the Offramp of the Algonquin Bridge Overpass) - Uma área industrial sob a ponte</li>
+                                <li>Outlook Park - Um parque público inspirado no Prospect Park de Brooklyn</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="district__neighborhoods">
+                            <h4 class="district__neighborhoods-title">Bairros:</h4>
+                            <div class="neighborhood-tags">
+                                <span class="neighborhood-tag">Beachgate</span>
+                                <span class="neighborhood-tag">BOABO</span>
+                                <span class="neighborhood-tag">Downtown</span>
+                                <span class="neighborhood-tag">East Hook</span>
+                                <span class="neighborhood-tag">Firefly Island</span>
+                                <span class="neighborhood-tag">Firefly Projects</span>
+                                <span class="neighborhood-tag">Hove Beach</span>
+                                <span class="neighborhood-tag">Outlook</span>
+                                <span class="neighborhood-tag">Rotterdam Hill</span>
+                                <span class="neighborhood-tag">Schottler</span>
+                                <span class="neighborhood-tag">South Slopes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dukes -->
+                <div class="district" id="dukes">
+                    <div class="district__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de Dukes -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="district__content" data-aos="fade-left">
+                        <h3 class="district__name">Dukes</h3>
+                        <div class="district__inspiration">Inspirado em: Queens</div>
+                        
+                        <p class="district__description">Dukes é um distrito predominantemente residencial localizado a nordeste de Broker. É caracterizado por bairros de classe média e média-alta, com casas unifamiliares e pequenos edifícios de apartamentos. O distrito tem uma atmosfera mais tranquila e suburbana em comparação com outras partes de Liberty City.</p>
+                        
+                        <p class="district__description">Dukes abriga o Francis International Airport, o principal aeroporto de Liberty City, inspirado no John F. Kennedy International Airport e no LaGuardia Airport. O distrito é conectado a Algonquin pela East Borough Bridge (inspirada na Queensboro Bridge) e a Bohan pela Dukes Bay Bridge.</p>
+                        
+                        <div class="district__highlights">
+                            <h4 class="district__highlights-title">Destaques:</h4>
+                            <ul class="district__highlights-list">
+                                <li>Francis International Airport - O principal aeroporto de Liberty City</li>
+                                <li>Meadows Park - Um grande parque público inspirado no Flushing Meadows-Corona Park</li>
+                                <li>East Borough Bridge - Uma ponte que conecta Dukes a Algonquin</li>
+                                <li>Cerveza Heights - Um bairro com forte influência hispânica</li>
+                                <li>Willis Stadium - Um estádio de beisebol inspirado no Shea Stadium (agora Citi Field)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="district__neighborhoods">
+                            <h4 class="district__neighborhoods-title">Bairros:</h4>
+                            <div class="neighborhood-tags">
+                                <span class="neighborhood-tag">Cerveza Heights</span>
+                                <span class="neighborhood-tag">East Island City</span>
+                                <span class="neighborhood-tag">Francis International Airport</span>
+                                <span class="neighborhood-tag">Meadow Hills</span>
+                                <span class="neighborhood-tag">Meadows Park</span>
+                                <span class="neighborhood-tag">Steinway</span>
+                                <span class="neighborhood-tag">Willis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bohan -->
+                <div class="district" id="bohan">
+                    <div class="district__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de Bohan -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="district__content" data-aos="fade-left">
+                        <h3 class="district__name">Bohan</h3>
+                        <div class="district__inspiration">Inspirado em: Bronx</div>
+                        
+                        <p class="district__description">Bohan é o distrito mais ao norte de Liberty City e também o menor e mais pobre. É caracterizado por áreas industriais decadentes, projetos habitacionais e altos índices de criminalidade. Bohan é retratado como um distrito problemático, com forte presença de gangues e tráfico de drogas.</p>
+                        
+                        <p class="district__description">Após os eventos em Broker, Niko e Roman se mudam temporariamente para um apartamento em South Bohan. O distrito é conectado a Algonquin pela Northwood Heights Bridge e a Dukes pela Dukes Bay Bridge. Apesar de seus problemas, Bohan tem uma rica cultura urbana, com forte influência latina e afro-americana.</p>
+                        
+                        <div class="district__highlights">
+                            <h4 class="district__highlights-title">Destaques:</h4>
+                            <ul class="district__highlights-list">
+                                <li>Northwood Heights Bridge - Uma ponte que conecta Bohan a Algonquin</li>
+                                <li>South Bohan - Área onde Niko e Roman moram temporariamente</li>
+                                <li>Industrial - Zona industrial com fábricas abandonadas</li>
+                                <li>Boulevard - A principal avenida que corta o distrito</li>
+                                <li>Chase Point - Área portuária com vista para o Humboldt River</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="district__neighborhoods">
+                            <h4 class="district__neighborhoods-title">Bairros:</h4>
+                            <div class="neighborhood-tags">
+                                <span class="neighborhood-tag">Boulevard</span>
+                                <span class="neighborhood-tag">Chase Point</span>
+                                <span class="neighborhood-tag">Fortside</span>
+                                <span class="neighborhood-tag">Industrial</span>
+                                <span class="neighborhood-tag">Little Bay</span>
+                                <span class="neighborhood-tag">Northern Gardens</span>
+                                <span class="neighborhood-tag">South Bohan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alderney -->
+                <div class="district" id="alderney">
+                    <div class="district__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de Alderney -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="district__content" data-aos="fade-left">
+                        <h3 class="district__name">Alderney</h3>
+                        <div class="district__inspiration">Inspirado em: Nova Jersey</div>
+                        
+                        <p class="district__description">Tecnicamente, Alderney é um estado separado de Liberty City, mas é considerado parte da área metropolitana. Localizado a oeste de Algonquin, Alderney é caracterizado por uma mistura de áreas industriais, subúrbios de classe média e algumas áreas residenciais de luxo. O distrito tem uma reputação negativa entre os habitantes de Liberty City, frequentemente sendo alvo de piadas.</p>
+                        
+                        <p class="district__description">Alderney é o lar da família criminosa Pegorino, que desempenha um papel importante no final da história principal. O distrito é conectado a Algonquin pela Booth Tunnel e pela Hickey Bridge. Alderney State Correctional Facility, uma prisão de segurança máxima, está localizada na parte norte do distrito.</p>
+                        
+                        <div class="district__highlights">
+                            <h4 class="district__highlights-title">Destaques:</h4>
+                            <ul class="district__highlights-list">
+                                <li>Booth Tunnel - Um túnel que conecta Alderney a Algonquin</li>
+                                <li>Alderney State Correctional Facility - Uma prisão de segurança máxima</li>
+                                <li>Westdyke Memorial Hospital - O principal hospital do distrito</li>
+                                <li>Alderney Casino - Um cassino abandonado e inacabado</li>
+                                <li>Acter Industrial Park - Uma grande zona industrial</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="district__neighborhoods">
+                            <h4 class="district__neighborhoods-title">Bairros:</h4>
+                            <div class="neighborhood-tags">
+                                <span class="neighborhood-tag">Acter</span>
+                                <span class="neighborhood-tag">Acter Industrial Park</span>
+                                <span class="neighborhood-tag">Alderney City</span>
+                                <span class="neighborhood-tag">Alderney State Correctional Facility</span>
+                                <span class="neighborhood-tag">Berchem</span>
+                                <span class="neighborhood-tag">Leftwood</span>
+                                <span class="neighborhood-tag">Normandy</span>
+                                <span class="neighborhood-tag">Port Tudor</span>
+                                <span class="neighborhood-tag">Tudor</span>
+                                <span class="neighborhood-tag">Westdyke</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Pontos de Interesse -->
+        <section class="landmarks" id="landmarks">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Pontos de Interesse</h2>
+                    <p class="section-header__subtitle">Marcos icônicos de Liberty City</p>
+                </header>
+                
+                <div class="landmarks__grid">
+                    <!-- Rotterdam Tower -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem do Rotterdam Tower -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Rotterdam Tower</h3>
+                            <div class="landmark-card__location">Algonquin, The Triangle</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Empire State Building</div>
+                            <p class="landmark-card__description">O arranha-céu mais alto de Liberty City, com 1472 pés (448,7 metros) de altura. Os jogadores podem subir até o deck de observação no 82º andar, de onde se tem uma vista panorâmica da cidade. A torre é um marco icônico na paisagem urbana de Algonquin.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Statue of Happiness -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem da Statue of Happiness -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Statue of Happiness</h3>
+                            <div class="landmark-card__location">Happiness Island</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Estátua da Liberdade</div>
+                            <p class="landmark-card__description">Uma paródia da Estátua da Liberdade, localizada em Happiness Island. Em vez da tocha, ela segura um copo de café, e seu rosto tem um sorriso inquietante. Dentro da estátua, há um segredo: um coração gigante batendo, acessível através de uma porta escondida.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Middle Park -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem do Middle Park -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Middle Park</h3>
+                            <div class="landmark-card__location">Algonquin, Middle Park</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Central Park</div>
+                            <p class="landmark-card__description">Um grande parque urbano no centro de Algonquin, inspirado no Central Park de Nova York. O parque oferece um refúgio verde em meio à selva de concreto, com lagos, pontes, caminhos para corrida e áreas de lazer. É um local popular para pedestres e um ponto de encontro para várias missões.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Star Junction -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem do Star Junction -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Star Junction</h3>
+                            <div class="landmark-card__location">Algonquin, Star Junction</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Times Square</div>
+                            <p class="landmark-card__description">A versão de GTA IV da Times Square, com enormes painéis luminosos, teatros, lojas e multidões de turistas. É um dos locais mais movimentados e visualmente impressionantes de Liberty City, especialmente à noite, quando os letreiros neon iluminam as ruas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Broker Bridge -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem da Broker Bridge -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Broker Bridge</h3>
+                            <div class="landmark-card__location">Entre Broker e Algonquin</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Brooklyn Bridge</div>
+                            <p class="landmark-card__description">Uma ponte icônica que conecta Broker a Algonquin, inspirada na Brooklyn Bridge. Com suas torres características e cabos suspensores, a Broker Bridge é um dos marcos mais reconhecíveis de Liberty City e uma importante rota de transporte.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Firefly Island -->
+                    <div class="landmark-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="landmark-card__image">
+                            <!-- Placeholder para imagem de Firefly Island -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="landmark-card__content">
+                            <h3 class="landmark-card__name">Firefly Island</h3>
+                            <div class="landmark-card__location">Broker, Firefly Island</div>
+                            <div class="landmark-card__inspiration">Inspirado em: Coney Island</div>
+                            <p class="landmark-card__description">Um parque de diversões abandonado inspirado em Coney Island. Embora muitas das atrações estejam fechadas ou em mau estado, o local mantém seu charme nostálgico. A montanha-russa Screamer e a roda-gigante são marcos visíveis da costa de Broker.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Atividades -->
+        <section class="activities" id="activities">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Atividades</h2>
+                    <p class="section-header__subtitle">O que fazer em Liberty City</p>
+                </header>
+                
+                <div class="activities__tabs">
+                    <div class="tabs">
+                        <div class="tabs__header">
+                            <button class="tabs__button tabs__button--active" data-tab="tab1">Entretenimento</button>
+                            <button class="tabs__button" data-tab="tab2">Esportes</button>
+                            <button class="tabs__button" data-tab="tab3">Restaurantes</button>
+                            <button class="tabs__button" data-tab="tab4">Vida Noturna</button>
+                            <div class="tabs__indicator"></div>
+                        </div>
+                        
+                        <div class="tabs__content">
+                            <!-- Tab 1: Entretenimento -->
+                            <div class="tabs__panel tabs__panel--active" id="tab1">
+                                <div class="activities-grid">
+                                    <div class="activity-card" data-aos="fade-up">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Bowling -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Memory Lanes</h3>
+                                            <div class="activity-card__location">Broker, Firefly Island</div>
+                                            <p class="activity-card__description">Um boliche onde Niko pode jogar com seus amigos. Roman é particularmente insistente em convidar Niko para jogar boliche, o que se tornou um meme popular entre os fãs da série. O minijogo de boliche é simples, mas divertido, e uma boa maneira de aumentar a amizade com os personagens.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Dardos -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Steinway Beer Garden</h3>
+                                            <div class="activity-card__location">Dukes, Steinway</div>
+                                            <p class="activity-card__description">Um bar onde Niko pode jogar dardos com seus amigos. O minijogo de dardos requer precisão e timing, e é uma atividade popular para aumentar a amizade com personagens como Little Jacob e Packie McReary. O bar também serve como um local de encontro para várias missões.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Cabaret -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Split Sides Comedy Club</h3>
+                                            <div class="activity-card__location">Algonquin, Star Junction</div>
+                                            <p class="activity-card__description">Um clube de comédia onde Niko pode assistir a shows de stand-up de comediantes como Ricky Gervais e Katt Williams. Os shows são gravações reais dos comediantes, adicionando um toque de realismo ao jogo. É uma atividade passiva, mas divertida, e uma boa maneira de relaxar entre missões.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 2: Esportes -->
+                            <div class="tabs__panel" id="tab2">
+                                <div class="activities-grid">
+                                    <div class="activity-card" data-aos="fade-up">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Helicóptero -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Passeios de Helicóptero</h3>
+                                            <div class="activity-card__location">Algonquin, Fishmarket South</div>
+                                            <p class="activity-card__description">Brucie Kibbutz oferece passeios de helicóptero pela cidade, permitindo que Niko veja Liberty City de uma perspectiva aérea. Estes passeios são uma boa maneira de apreciar a escala e o detalhe da cidade, além de serem uma atividade divertida para aumentar a amizade com Brucie.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Corridas -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Corridas de Rua</h3>
+                                            <div class="activity-card__location">Vários locais pela cidade</div>
+                                            <p class="activity-card__description">Brucie também organiza corridas de rua ilegais por toda Liberty City. Estas corridas são desafiadoras e recompensadoras, testando as habilidades de direção do jogador em diferentes condições e rotas. Vencer corridas rende dinheiro e aumenta o respeito de Brucie por Niko.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de QUB3D -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">QUB3D</h3>
+                                            <div class="activity-card__location">Vários locais pela cidade</div>
+                                            <p class="activity-card__description">Um minijogo de arcade encontrado em vários locais, como lanchonetes e bares. QUB3D é um jogo de quebra-cabeça semelhante a Tetris, onde o jogador deve combinar blocos coloridos. É uma atividade simples, mas viciante, e uma boa maneira de passar o tempo entre missões.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 3: Restaurantes -->
+                            <div class="tabs__panel" id="tab3">
+                                <div class="activities-grid">
+                                    <div class="activity-card" data-aos="fade-up">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Burger Shot -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Burger Shot</h3>
+                                            <div class="activity-card__location">Vários locais pela cidade</div>
+                                            <p class="activity-card__description">Uma rede de fast food encontrada em vários locais de Liberty City. Burger Shot é uma paródia do McDonald's e do Burger King, oferecendo refeições rápidas e baratas. Comer no Burger Shot restaura a saúde de Niko, tornando-o um local útil durante missões intensas.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Cluckin' Bell -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Cluckin' Bell</h3>
+                                            <div class="activity-card__location">Vários locais pela cidade</div>
+                                            <p class="activity-card__description">Outra rede de fast food, especializada em frango frito. Cluckin' Bell é uma paródia do KFC e do Taco Bell, com um mascote de galinha e slogans humorísticos. Assim como o Burger Shot, comer no Cluckin' Bell restaura a saúde de Niko.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Restaurante de Luxo -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Restaurantes de Luxo</h3>
+                                            <div class="activity-card__location">Principalmente em Algonquin</div>
+                                            <p class="activity-card__description">Liberty City possui vários restaurantes de luxo, especialmente em Algonquin, onde Niko pode levar seus encontros românticos. Estes restaurantes não são interativos como os fast foods, mas são importantes para as missões de encontros e adicionam realismo à cidade.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 4: Vida Noturna -->
+                            <div class="tabs__panel" id="tab4">
+                                <div class="activities-grid">
+                                    <div class="activity-card" data-aos="fade-up">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Clube de Strip -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Honkers</h3>
+                                            <div class="activity-card__location">Alderney, Tudor</div>
+                                            <p class="activity-card__description">Um clube de strip-tease em Alderney, onde Niko pode assistir a apresentações de dançarinas e até mesmo receber danças privadas. Honkers é uma paródia da rede de clubes Hooters, com um tema semelhante e decoração provocante. É um local popular para encontros com amigos no jogo.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Clube Noturno -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Maisonette 9</h3>
+                                            <div class="activity-card__location">Algonquin, Westminster</div>
+                                            <p class="activity-card__description">Um clube noturno exclusivo que aparece principalmente na expansão The Ballad of Gay Tony. Embora não seja muito utilizado na história principal de GTA IV, o clube é mencionado e representa a vida noturna de elite de Liberty City. É administrado por Tony Prince, também conhecido como Gay Tony.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="activity-card" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="activity-card__image">
+                                            <!-- Placeholder para imagem de Bar -->
+                                            <div class="image-placeholder image-placeholder--wide"></div>
+                                        </div>
+                                        <div class="activity-card__content">
+                                            <h3 class="activity-card__name">Lucky Winkles</h3>
+                                            <div class="activity-card__location">Algonquin, Purgatory</div>
+                                            <p class="activity-card__description">Um pub irlandês frequentado pela família McReary. Lucky Winkles é um local importante para várias missões envolvendo Packie McReary e seus irmãos. O bar tem uma atmosfera autêntica de pub irlandês, com decoração tradicional e música ambiente apropriada.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Transporte -->
+        <section class="transportation" id="transportation">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Transporte</h2>
+                    <p class="section-header__subtitle">Como se locomover em Liberty City</p>
+                </header>
+                
+                <div class="transportation__grid">
+                    <!-- Metrô -->
+                    <div class="transport-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="transport-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8 20h8M12 4v16M20 16.5v-9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2z"/>
+                                <circle cx="8.5" cy="13" r="1"/>
+                                <circle cx="15.5" cy="13" r="1"/>
+                            </svg>
+                        </div>
+                        <div class="transport-card__content">
+                            <h3 class="transport-card__name">Metrô de Liberty City (LTA)</h3>
+                            <p class="transport-card__description">O sistema de metrô de Liberty City, operado pela Liberty Transport Authority (LTA), é uma forma eficiente de viajar entre os distritos. Com 26 estações distribuídas por quatro linhas, o metrô conecta Algonquin, Broker, Dukes e Bohan. As estações são facilmente identificáveis por seus característicos postes verdes com globos amarelos.</p>
+                            <p class="transport-card__description">O metrô é totalmente funcional e interativo, permitindo que os jogadores embarquem nos trens e viajem entre as estações. Durante a viagem, é possível observar a paisagem urbana através das janelas ou mudar a câmera para uma visão externa do trem. O sistema de metrô é uma homenagem ao icônico metrô de Nova York.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Táxis -->
+                    <div class="transport-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="transport-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="3" y="6" width="18" height="12" rx="2" ry="2"/>
+                                <path d="M14 9h1"/>
+                                <path d="M9 9h1"/>
+                                <path d="M8 17v2"/>
+                                <path d="M16 17v2"/>
+                                <path d="M3 9h18"/>
+                            </svg>
+                        </div>
+                        <div class="transport-card__content">
+                            <h3 class="transport-card__name">Táxis</h3>
+                            <p class="transport-card__description">Os táxis amarelos são onipresentes em Liberty City, especialmente em Algonquin. Os jogadores podem pegar um táxi a qualquer momento, acenando para um que esteja passando, e viajar para qualquer local da cidade. Os táxis oferecem duas opções de viagem: a viagem normal, onde o jogador observa o trajeto, e a viagem rápida, que transporta instantaneamente o jogador para o destino mediante uma taxa adicional.</p>
+                            <p class="transport-card__description">Roman Bellic opera uma empresa de táxi em Broker, e mais tarde em Algonquin, oferecendo a Niko o serviço de táxi gratuito. Basta ligar para Roman, e um táxi especial preto virá buscar Niko em qualquer local da cidade. Este serviço se torna particularmente útil para missões distantes ou quando o jogador não quer dirigir.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pontes e Túneis -->
+                    <div class="transport-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="transport-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M6 12h12M6 16h12M6 8h12M2 20h20M2 4h20"/>
+                            </svg>
+                        </div>
+                        <div class="transport-card__content">
+                            <h3 class="transport-card__name">Pontes e Túneis</h3>
+                            <p class="transport-card__description">Liberty City é dividida por rios e canais, tornando as pontes e túneis essenciais para a locomoção entre os distritos. Existem várias pontes importantes, como a Broker Bridge (inspirada na Brooklyn Bridge), a East Borough Bridge (inspirada na Queensboro Bridge) e a Northwood Heights Bridge (inspirada na George Washington Bridge).</p>
+                            <p class="transport-card__description">O Booth Tunnel (inspirado no Lincoln Tunnel) conecta Algonquin a Alderney, passando sob o West River. No início do jogo, algumas pontes e túneis estão bloqueados devido a um alerta terrorista, limitando o acesso do jogador a certas áreas da cidade. À medida que a história progride, essas rotas são gradualmente liberadas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Barcos -->
+                    <div class="transport-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="transport-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 18h18M7 18l2-9h6l2 9M12 3v6"/>
+                            </svg>
+                        </div>
+                        <div class="transport-card__content">
+                            <h3 class="transport-card__name">Barcos</h3>
+                            <p class="transport-card__description">Como uma cidade cercada por água, Liberty City oferece várias oportunidades para transporte marítimo. Os jogadores podem encontrar e usar diversos tipos de barcos, desde pequenos botes até iates luxuosos e lanchas rápidas. Navegar pelas águas ao redor de Liberty City proporciona vistas espetaculares da paisagem urbana e é uma forma relaxante de explorar a cidade.</p>
+                            <p class="transport-card__description">Existem também serviços de balsa que conectam diferentes partes da cidade, embora não sejam interativos como os táxis ou o metrô. Os portos e marinas espalhados pela cidade, como o East Hook em Broker e o Pier 45 em Algonquin, são bons lugares para encontrar barcos.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Helicópteros -->
+                    <div class="transport-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="transport-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 4v16M8 8h8M10 12h4M4 16h16"/>
+                            </svg>
+                        </div>
+                        <div class="transport-card__content">
+                            <h3 class="transport-card__name">Helicópteros</h3>
+                            <p class="transport-card__description">Para uma visão aérea de Liberty City, os jogadores podem usar helicópteros. Estes veículos podem ser encontrados em helipontos específicos, como o do East Holland Police Station em Algonquin ou o do Francis International Airport em Dukes. Voar de helicóptero oferece uma perspectiva única da cidade e é uma forma rápida de viajar grandes distâncias.</p>
+                            <p class="transport-card__description">Brucie Kibbutz oferece passeios de helicóptero como parte de suas atividades de amizade, permitindo que Niko veja a cidade do alto sem precisar pilotar. Os helicópteros também são utilizados em várias missões ao longo do jogo, adicionando variedade à jogabilidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Clima e Ambiente -->
+        <section class="weather" id="weather">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Clima e Ambiente</h2>
+                    <p class="section-header__subtitle">A atmosfera dinâmica de Liberty City</p>
+                </header>
+                
+                <div class="weather__content">
+                    <div class="weather__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de clima -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="weather__info" data-aos="fade-left">
+                        <p class="weather__text">GTA IV introduziu um sistema de clima dinâmico que afeta significativamente a jogabilidade e a atmosfera de Liberty City. O clima muda gradualmente ao longo do tempo, criando uma experiência mais imersiva e realista. Os diferentes tipos de clima incluem:</p>
+                        
+                        <div class="weather__types">
+                            <div class="weather-type">
+                                <h3 class="weather-type__name">Ensolarado</h3>
+                                <p class="weather-type__description">Dias claros com céu azul e poucas nuvens. A iluminação é brilhante e as cores da cidade são vibrantes. Este clima é ideal para explorar a cidade e apreciar os detalhes visuais.</p>
+                            </div>
+                            
+                            <div class="weather-type">
+                                <h3 class="weather-type__name">Nublado</h3>
+                                <p class="weather-type__description">Céu encoberto com nuvens cinzentas. A iluminação é mais suave e difusa, criando uma atmosfera mais sombria. Este clima é comum em Liberty City e reflete o tom mais sério do jogo.</p>
+                            </div>
+                            
+                            <div class="weather-type">
+                                <h3 class="weather-type__name">Chuvoso</h3>
+                                <p class="weather-type__description">Chuva que varia de leve a intensa. As ruas ficam molhadas e refletivas, os pedestres abrem guarda-chuvas e correm para se abrigar. A chuva afeta a dirigibilidade dos veículos, tornando-os mais propensos a derrapar.</p>
+                            </div>
+                            
+                            <div class="weather-type">
+                                <h3 class="weather-type__name">Tempestade</h3>
+                                <p class="weather-type__description">Chuva intensa acompanhada de trovões e relâmpagos. A visibilidade é reduzida e a atmosfera é tensa. As tempestades criam momentos dramáticos, especialmente durante missões importantes.</p>
+                            </div>
+                            
+                            <div class="weather-type">
+                                <h3 class="weather-type__name">Névoa</h3>
+                                <p class="weather-type__description">Neblina que reduz a visibilidade, especialmente à distância. Os arranha-céus de Algonquin desaparecem nas nuvens, e as luzes da cidade criam um efeito atmosférico único através da névoa.</p>
+                            </div>
+                        </div>
+                        
+                        <p class="weather__text">Além do clima, Liberty City tem um ciclo completo de dia e noite, com iluminação realista que muda ao longo do dia. O nascer e o pôr do sol são particularmente impressionantes, com cores vibrantes que se refletem nos edifícios de vidro de Algonquin. À noite, a cidade ganha vida com luzes neon, faróis de carros e janelas iluminadas.</p>
+                        
+                        <p class="weather__text">O ambiente sonoro também contribui para a atmosfera da cidade. Os sons de trânsito, sirenes, conversas de pedestres e música ambiente mudam dependendo da localização, hora do dia e clima. Em dias chuvosos, pode-se ouvir o som da chuva batendo no teto dos carros e nos guarda-chuvas dos pedestres. Durante tempestades, os trovões ecoam entre os edifícios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Easter Eggs -->
+        <section class="easter-eggs" id="easter-eggs">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Segredos e Easter Eggs</h2>
+                    <p class="section-header__subtitle">Curiosidades escondidas em Liberty City</p>
+                </header>
+                
+                <div class="easter-eggs__grid">
+                    <!-- Heart of Liberty -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem do coração -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Coração da Liberdade</h3>
+                            <p class="easter-egg__description">Dentro da Statue of Happiness em Happiness Island, há uma porta secreta que leva a uma sala contendo um coração humano gigante batendo, suspenso por correntes. Este é um dos easter eggs mais famosos e bizarros do jogo, e sua presença nunca é explicada na história.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Swing Set Glitch -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem do balanço -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Glitch do Balanço</h3>
+                            <p class="easter-egg__description">Em um playground em Broker, há um conjunto de balanços que, devido a um glitch na física do jogo, pode catapultar veículos a grandes distâncias quando atingidos em certos ângulos. Este glitch não intencional se tornou uma diversão popular entre os jogadores e nunca foi corrigido pelos desenvolvedores.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ghost Town -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="300">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem da cidade fantasma -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Cidade Fantasma</h3>
+                            <p class="easter-egg__description">Usando certas técnicas para sair dos limites do mapa, os jogadores podem encontrar uma "cidade fantasma" - uma versão simplificada e não detalhada de Liberty City usada como plano de fundo para vistas distantes. Esta área não foi projetada para ser acessível, mas curiosos encontraram maneiras de explorá-la.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ratman -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="400">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem do Ratman -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Lenda do Ratman</h3>
+                            <p class="easter-egg__description">Uma lenda urbana popular entre os jogadores é a existência do "Ratman", uma suposta criatura metade homem, metade rato que vive nos túneis do metrô. Embora não haja evidências oficiais de sua existência no jogo, muitos jogadores afirmam tê-lo visto, e a lenda continua a ser discutida na comunidade.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- QUB3D High Score -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="500">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem do QUB3D -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Recorde do QUB3D</h3>
+                            <p class="easter-egg__description">Nas máquinas de arcade QUB3D espalhadas pela cidade, o recorde é sempre de "PRC" com 9999 pontos. As iniciais PRC referem-se a Patrick Respatim Brown, um dos desenvolvedores do jogo, que realmente conseguiu essa pontuação durante o desenvolvimento.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Abandoned Hospital -->
+                    <div class="easter-egg" data-aos="fade-up" data-aos-delay="600">
+                        <div class="easter-egg__image">
+                            <!-- Placeholder para imagem do hospital -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="easter-egg__content">
+                            <h3 class="easter-egg__name">Hospital Abandonado</h3>
+                            <p class="easter-egg__description">Em Colony Island, há um hospital abandonado que não é utilizado em nenhuma missão principal. O local tem uma atmosfera assustadora, com corredores vazios e salas destruídas. Muitos jogadores acreditam que o local é assombrado, e alguns relatam ter ouvido sons estranhos ao explorar o edifício.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Explore os Veículos de GTA IV</h2>
+                    <p class="cta__text">Descubra os carros, motos, barcos e aeronaves que você pode pilotar em Liberty City.</p>
+                    <div class="cta__actions">
+                        <a href="vehicles.html" class="btn btn--primary btn--large">Ver Veículos</a>
+                        <a href="missions.html" class="btn btn--outline btn--large">Explorar Missões</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

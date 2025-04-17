@@ -1,0 +1,210 @@
+/* Prefixos de fornecedor para garantir compatibilidade cross-browser */
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Transformações */
+.transform-compatible {
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Transições */
+.transition-compatible {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* Flexbox */
+.flex-compatible {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-direction-compatible {
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.justify-content-compatible {
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  justify-content: center;
+}
+
+.align-items-compatible {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+}
+
+/* Filtros */
+.filter-compatible {
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -ms-filter: blur(5px);
+  -o-filter: blur(5px);
+  filter: blur(5px);
+}
+
+/* Gradientes */
+.gradient-compatible {
+  background: #1e5799;
+  background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(50%,#2989d8), color-stop(51%,#207cca), color-stop(100%,#7db9e8));
+  background: -webkit-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+  background: -o-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+  background: -ms-linear-gradient(top, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+  background: linear-gradient(to bottom, #1e5799 0%,#2989d8 50%,#207cca 51%,#7db9e8 100%);
+}
+
+/* Colunas */
+.column-compatible {
+  -webkit-column-count: 3;
+  -moz-column-count: 3;
+  column-count: 3;
+  
+  -webkit-column-gap: 40px;
+  -moz-column-gap: 40px;
+  column-gap: 40px;
+}
+
+/* Box Shadow */
+.shadow-compatible {
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+/* Appearance */
+.appearance-compatible {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* User Select */
+.no-select-compatible {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Backdrop Filter */
+.backdrop-filter-compatible {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Scrollbar */
+.scrollbar-compatible {
+  scrollbar-width: thin; /* Firefox */
+}
+
+.scrollbar-compatible::-webkit-scrollbar {
+  width: 8px; /* Chrome, Safari, Edge */
+}
+
+.scrollbar-compatible::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+/* Placeholder */
+.placeholder-compatible::placeholder {
+  color: #999;
+}
+
+.placeholder-compatible::-webkit-input-placeholder {
+  color: #999;
+}
+
+.placeholder-compatible::-moz-placeholder {
+  color: #999;
+}
+
+.placeholder-compatible:-ms-input-placeholder {
+  color: #999;
+}
+
+/* Media Queries para Responsividade */
+/* Desktop */
+@media screen and (min-width: 1024px) {
+  .responsive-element {
+    font-size: 16px;
+    padding: 20px;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .responsive-element {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
+/* Smartphone */
+@media screen and (max-width: 767px) {
+  .responsive-element {
+    font-size: 12px;
+    padding: 10px;
+  }
+}
+
+/* Orientação do dispositivo */
+@media screen and (orientation: landscape) {
+  .orientation-sensitive {
+    flex-direction: row;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .orientation-sensitive {
+    flex-direction: column;
+  }
+}
+
+/* Suporte a impressão */
+@media print {
+  .print-friendly {
+    background: none;
+    color: black;
+  }
+  
+  .no-print {
+    display: none;
+  }
+}

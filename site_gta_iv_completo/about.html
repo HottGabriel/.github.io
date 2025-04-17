@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça mais sobre nossa empresa e nossa missão">
+    <meta name="keywords" content="HTML5, CSS3, JavaScript, Web Design, Site Complexo, Sobre">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#2196f3">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Sobre Nós | Site Complexo</title>
+</head>
+<body class="loading" data-theme="light">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando experiência imersiva...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">Complex<span class="logo__highlight">Site</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="about.html" class="nav-menu__link">Sobre</a></li>
+                    <li class="nav-menu__item"><a href="services.html" class="nav-menu__link">Serviços</a></li>
+                    <li class="nav-menu__item"><a href="portfolio.html" class="nav-menu__link">Portfólio</a></li>
+                    <li class="nav-menu__item"><a href="blog.html" class="nav-menu__link">Blog</a></li>
+                    <li class="nav-menu__item"><a href="contact.html" class="nav-menu__link nav-menu__link--highlight">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Digite para pesquisar..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--about" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Sobre <span class="hero__title-highlight">Nós</span></h1>
+                    <p class="hero__subtitle">Conheça nossa história, missão e valores</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Nossa História -->
+        <section class="about-section" id="history">
+            <div class="container">
+                <div class="about-section__grid">
+                    <div class="about-section__content" data-aos="fade-right">
+                        <header class="section-header section-header--left">
+                            <h2 class="section-header__title">Nossa História</h2>
+                            <div class="section-header__line"></div>
+                        </header>
+                        
+                        <div class="about-section__text">
+                            <p>Fundada em 2020, a ComplexSite nasceu da paixão por criar experiências web extraordinárias que combinam design inovador, tecnologia de ponta e usabilidade excepcional.</p>
+                            
+                            <p>Nossa jornada começou com um pequeno grupo de desenvolvedores e designers visionários que acreditavam que a web poderia ser mais do que apenas páginas estáticas. Queríamos criar sites que surpreendessem, encantassem e proporcionassem experiências memoráveis.</p>
+                            
+                            <p>Ao longo dos anos, expandimos nossa equipe e aprimoramos nossas habilidades, sempre mantendo o compromisso com a excelência e a inovação. Hoje, somos reconhecidos como pioneiros em desenvolvimento web avançado, criando soluções que desafiam os limites do que é possível na web.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section__image" data-aos="fade-left">
+                        <div class="image-reveal">
+                            <div class="image-reveal__inner">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--rectangle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Missão e Valores -->
+        <section class="about-section about-section--alt" id="mission">
+            <div class="container">
+                <div class="about-section__grid about-section__grid--reverse">
+                    <div class="about-section__content" data-aos="fade-left">
+                        <header class="section-header section-header--left">
+                            <h2 class="section-header__title">Missão e Valores</h2>
+                            <div class="section-header__line"></div>
+                        </header>
+                        
+                        <div class="about-section__text">
+                            <h3>Nossa Missão</h3>
+                            <p>Transformar a experiência digital através de soluções web inovadoras que inspirem, engajem e conectem pessoas em todo o mundo.</p>
+                            
+                            <h3>Nossos Valores</h3>
+                            <ul class="values-list">
+                                <li class="values-list__item">
+                                    <div class="values-list__icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="values-list__content">
+                                        <h4>Inovação</h4>
+                                        <p>Buscamos constantemente novas tecnologias e abordagens para criar experiências web únicas.</p>
+                                    </div>
+                                </li>
+                                
+                                <li class="values-list__item">
+                                    <div class="values-list__icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <path d="M12 8v4l3 3"/>
+                                        </svg>
+                                    </div>
+                                    <div class="values-list__content">
+                                        <h4>Excelência</h4>
+                                        <p>Comprometemo-nos com os mais altos padrões de qualidade em tudo o que fazemos.</p>
+                                    </div>
+                                </li>
+                                
+                                <li class="values-list__item">
+                                    <div class="values-list__icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="9" cy="7" r="4"/>
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                        </svg>
+                                    </div>
+                                    <div class="values-list__content">
+                                        <h4>Colaboração</h4>
+                                        <p>Acreditamos no poder do trabalho em equipe e na sinergia de diferentes perspectivas.</p>
+                                    </div>
+                                </li>
+                                
+                                <li class="values-list__item">
+                                    <div class="values-list__icon">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                            <polyline points="22 4 12 14.01 9 11.01"/>
+                                        </svg>
+                                    </div>
+                                    <div class="values-list__content">
+                                        <h4>Integridade</h4>
+                                        <p>Agimos com honestidade, transparência e responsabilidade em todas as nossas interações.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section__image" data-aos="fade-right">
+                        <div class="image-reveal">
+                            <div class="image-reveal__inner">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--rectangle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Nossa Equipe -->
+        <section class="team" id="team">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Nossa Equipe</h2>
+                    <p class="section-header__subtitle">Conheça os talentos por trás de nossas criações</p>
+                </header>
+                
+                <div class="team__grid">
+                    <!-- Membro da Equipe 1 -->
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="team-card__image">
+                            <div class="image-placeholder image-placeholder--square"></div>
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="team-card__social-link" aria-label="Twitter">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-card__content">
+                            <h3 class="team-card__name">Ricardo Oliveira</h3>
+                            <p class="team-card__role">Diretor Criativo</p>
+                            <p class="team-card__bio">Com mais de 15 anos de experiência em design, Ricardo lidera nossa equipe criativa com visão inovadora e paixão por excelência.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Membro da Equipe 2 -->
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="team-card__image">
+                            <div class="image-placeholder image-placeholder--square"></div>
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="team-card__social-link" aria-label="Twitter">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-card__content">
+                            <h3 class="team-card__name">Fernanda Santos</h3>
+                            <p class="team-card__role">Desenvolvedora Front-end</p>
+                            <p class="team-card__bio">Especialista em tecnologias web modernas, Fernanda transforma conceitos criativos em experiências interativas e imersivas.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Membro da Equipe 3 -->
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="team-card__image">
+                            <div class="image-placeholder image-placeholder--square"></div>
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="team-card__social-link" aria-label="Twitter">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-card__content">
+                            <h3 class="team-card__name">Lucas Mendes</h3>
+                            <p class="team-card__role">Desenvolvedor Back-end</p>
+                            <p class="team-card__bio">Com profundo conhecimento em arquitetura de sistemas, Lucas constrói a infraestrutura robusta que sustenta nossas aplicações.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Membro da Equipe 4 -->
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="team-card__image">
+                            <div class="image-placeholder image-placeholder--square"></div>
+                            <div class="team-card__social">
+                                <a href="#" class="team-card__social-link" aria-label="LinkedIn">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                        <rect x="2" y="9" width="4" height="12"/>
+                                        <circle cx="4" cy="4" r="2"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="team-card__social-link" aria-label="Twitter">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="team-card__content">
+                            <h3 class="team-card__name">Camila Alves</h3>
+                            <p class="team-card__role">UX/UI Designer</p>
+                            <p class="team-card__bio">Especialista em experiência do usuário, Camila cria interfaces intuitivas e atraentes que encantam e facilitam a interação.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Estatísticas -->
+        <section class="stats" id="stats">
+            <div class="container">
+                <div class="stats__grid">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__number" data-count="500">0</div>
+                        <div class="stat-card__label">Clientes Satisfeitos</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__number" data-count="850">0</div>
+                        <div class="stat-card__label">Projetos Concluídos</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__number" data-count="25">0</div>
+                        <div class="stat-card__label">Especialistas</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__number" data-count="15">0</div>
+                        <div class="stat-card__label">Prêmios Recebidos</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Parceiros -->
+        <section class="partners" id="partners">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Nossos Parceiros</h2>
+                    <p class="section-header__subtitle">Empresas que confiam em nosso trabalho</p>
+                </header>
+                
+                <div class="partners__slider">
+                    <div class="partners__track">
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                        <div class="partners__item">
+                            <div class="partners__logo">
+                                <div class="image-placeholder image-placeholder--logo"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Pronto para transformar sua presença digital?</h2>
+                    <p class="cta__text">Entre em contato conosco hoje mesmo e descubra como podemos ajudar a criar uma experiência web extraordinária para o seu negócio.</p>
+                    <div class="cta__actions">
+                        <a href="contact.html" class="btn btn--primary btn--large">Fale Conosco</a>
+                        <a href="services.html" class="btn btn--outline btn--large">Nossos Serviços</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Assistente Virtual</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Olá! Como posso ajudar você hoje?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">Complex<span class="logo__highlight">Site</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site HTML complexo com recursos avançados e design inovador, demonstrando o poder das tecnologias web modernas.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">Sobre</a></li>
+                        <li><a href="services.html">Serviços</a></li>
+                        <li><a href="portfolio.html">Portfólio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Documentação</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Suporte</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--contact">
+                    <h3 class="footer__heading">Contato</h3>
+                    <address class="footer__contact">
+                        <p><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Av. Paulista, 1000, São Paulo - SP</p>
+                        <p><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> (11) 99999-9999</p>
+                        <p><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> contato@complexsite.com.br</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 ComplexSite. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/chat-bot.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

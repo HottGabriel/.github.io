@@ -1,0 +1,477 @@
+/* Temas claro e escuro */
+
+/* Tema escuro (padrão) */
+:root {
+  /* Cores principais */
+  --color-primary: #e6b800;
+  --color-primary-light: #ffcc00;
+  --color-primary-dark: #cc9900;
+  
+  --color-secondary: #2c3e50;
+  --color-secondary-light: #34495e;
+  --color-secondary-dark: #1a2530;
+  
+  /* Cores de fundo */
+  --color-bg-dark: #121212;
+  --color-bg-medium: #1e1e1e;
+  --color-bg-light: #2d2d2d;
+  
+  /* Cores de texto */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-muted: #999999;
+  --color-text-highlight: var(--color-primary);
+  
+  /* Cores de ação */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+  --color-info: #3498db;
+}
+
+/* Tema claro */
+[data-theme="light"] {
+  /* Cores principais - mantidas para consistência */
+  --color-primary: #e6b800;
+  --color-primary-light: #ffcc00;
+  --color-primary-dark: #cc9900;
+  
+  --color-secondary: #2c3e50;
+  --color-secondary-light: #34495e;
+  --color-secondary-dark: #1a2530;
+  
+  /* Cores de fundo */
+  --color-bg-dark: #f5f5f5;
+  --color-bg-medium: #e9e9e9;
+  --color-bg-light: #ffffff;
+  
+  /* Cores de texto */
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-text-muted: #777777;
+  --color-text-highlight: var(--color-primary-dark);
+  
+  /* Cores de ação - ajustadas para melhor contraste no tema claro */
+  --color-success: #219653;
+  --color-warning: #f2994a;
+  --color-danger: #eb5757;
+  --color-info: #2d9cdb;
+}
+
+/* Tema GTA IV - variação mais escura e azulada */
+[data-theme="gta-iv"] {
+  /* Cores principais - ajustadas para o tema GTA IV */
+  --color-primary: #4a90e2;
+  --color-primary-light: #5d9fea;
+  --color-primary-dark: #3a80d2;
+  
+  --color-secondary: #2c3e50;
+  --color-secondary-light: #34495e;
+  --color-secondary-dark: #1a2530;
+  
+  /* Cores de fundo - mais escuras e azuladas */
+  --color-bg-dark: #0a0e17;
+  --color-bg-medium: #141824;
+  --color-bg-light: #1e2430;
+  
+  /* Cores de texto */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #b8c5d9;
+  --color-text-muted: #8896ab;
+  --color-text-highlight: var(--color-primary);
+  
+  /* Cores de ação */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+  --color-info: #3498db;
+}
+
+/* Tema TLAD (The Lost and Damned) - variação mais escura e avermelhada */
+[data-theme="tlad"] {
+  /* Cores principais - ajustadas para o tema TLAD */
+  --color-primary: #c13a3a;
+  --color-primary-light: #d44c4c;
+  --color-primary-dark: #a32e2e;
+  
+  --color-secondary: #2c2c2c;
+  --color-secondary-light: #3a3a3a;
+  --color-secondary-dark: #1e1e1e;
+  
+  /* Cores de fundo - mais escuras e avermelhadas */
+  --color-bg-dark: #0f0a0a;
+  --color-bg-medium: #1a1414;
+  --color-bg-light: #251c1c;
+  
+  /* Cores de texto */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #d9b8b8;
+  --color-text-muted: #ab8888;
+  --color-text-highlight: var(--color-primary);
+  
+  /* Cores de ação */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+  --color-info: #3498db;
+}
+
+/* Tema TBOGT (The Ballad of Gay Tony) - variação mais vibrante e roxa */
+[data-theme="tbogt"] {
+  /* Cores principais - ajustadas para o tema TBOGT */
+  --color-primary: #9b59b6;
+  --color-primary-light: #a66bbe;
+  --color-primary-dark: #8e44ad;
+  
+  --color-secondary: #2c2c2c;
+  --color-secondary-light: #3a3a3a;
+  --color-secondary-dark: #1e1e1e;
+  
+  /* Cores de fundo - mais escuras com toques de roxo */
+  --color-bg-dark: #0a0a12;
+  --color-bg-medium: #14141e;
+  --color-bg-light: #1e1e2c;
+  
+  /* Cores de texto */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #c8b8d9;
+  --color-text-muted: #9888ab;
+  --color-text-highlight: var(--color-primary);
+  
+  /* Cores de ação */
+  --color-success: #27ae60;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+  --color-info: #3498db;
+}
+
+/* Ajustes específicos para cada tema */
+
+/* Tema claro */
+[data-theme="light"] .header {
+  background-color: rgba(245, 245, 245, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .header--scrolled {
+  background-color: rgba(245, 245, 245, 0.95);
+}
+
+[data-theme="light"] .nav-toggle__bar {
+  background-color: var(--color-text-primary);
+}
+
+[data-theme="light"] .card,
+[data-theme="light"] .feature-card,
+[data-theme="light"] .character-card,
+[data-theme="light"] .district-card,
+[data-theme="light"] .activity-card,
+[data-theme="light"] .theme-card,
+[data-theme="light"] .category-card,
+[data-theme="light"] .special-vehicle,
+[data-theme="light"] .tip-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card:hover,
+[data-theme="light"] .feature-card:hover,
+[data-theme="light"] .character-card:hover,
+[data-theme="light"] .district-card:hover,
+[data-theme="light"] .activity-card:hover,
+[data-theme="light"] .theme-card:hover,
+[data-theme="light"] .category-card:hover,
+[data-theme="light"] .special-vehicle:hover,
+[data-theme="light"] .tip-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .card__footer,
+[data-theme="light"] .footer,
+[data-theme="light"] .footer__bottom {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .hero__parallax-layer--back {
+  opacity: 0.9;
+}
+
+[data-theme="light"] .quote-block {
+  background-color: rgba(230, 184, 0, 0.05);
+}
+
+/* Tema GTA IV */
+[data-theme="gta-iv"] .header {
+  background-color: rgba(10, 14, 23, 0.9);
+}
+
+[data-theme="gta-iv"] .header--scrolled {
+  background-color: rgba(10, 14, 23, 0.95);
+}
+
+[data-theme="gta-iv"] .hero__title-highlight,
+[data-theme="gta-iv"] .section-header__title::after,
+[data-theme="gta-iv"] .btn--primary,
+[data-theme="gta-iv"] .btn--outline:hover,
+[data-theme="gta-iv"] .theme-card__title::after,
+[data-theme="gta-iv"] .character-stat__fill,
+[data-theme="gta-iv"] .vehicle-stat__fill,
+[data-theme="gta-iv"] .progress__bar {
+  background-color: var(--color-primary);
+}
+
+[data-theme="gta-iv"] .hero__parallax-layer--back {
+  filter: hue-rotate(210deg) saturate(0.8);
+}
+
+[data-theme="gta-iv"] .quote-block {
+  border-left-color: var(--color-primary);
+}
+
+[data-theme="gta-iv"] .quote-block::before {
+  color: var(--color-primary);
+}
+
+/* Tema TLAD */
+[data-theme="tlad"] .header {
+  background-color: rgba(15, 10, 10, 0.9);
+}
+
+[data-theme="tlad"] .header--scrolled {
+  background-color: rgba(15, 10, 10, 0.95);
+}
+
+[data-theme="tlad"] .hero__title-highlight,
+[data-theme="tlad"] .section-header__title::after,
+[data-theme="tlad"] .btn--primary,
+[data-theme="tlad"] .btn--outline:hover,
+[data-theme="tlad"] .theme-card__title::after,
+[data-theme="tlad"] .character-stat__fill,
+[data-theme="tlad"] .vehicle-stat__fill,
+[data-theme="tlad"] .progress__bar {
+  background-color: var(--color-primary);
+}
+
+[data-theme="tlad"] .hero__parallax-layer--back {
+  filter: hue-rotate(330deg) saturate(0.7) brightness(0.8);
+}
+
+[data-theme="tlad"] .quote-block {
+  border-left-color: var(--color-primary);
+}
+
+[data-theme="tlad"] .quote-block::before {
+  color: var(--color-primary);
+}
+
+/* Tema TBOGT */
+[data-theme="tbogt"] .header {
+  background-color: rgba(10, 10, 18, 0.9);
+}
+
+[data-theme="tbogt"] .header--scrolled {
+  background-color: rgba(10, 10, 18, 0.95);
+}
+
+[data-theme="tbogt"] .hero__title-highlight,
+[data-theme="tbogt"] .section-header__title::after,
+[data-theme="tbogt"] .btn--primary,
+[data-theme="tbogt"] .btn--outline:hover,
+[data-theme="tbogt"] .theme-card__title::after,
+[data-theme="tbogt"] .character-stat__fill,
+[data-theme="tbogt"] .vehicle-stat__fill,
+[data-theme="tbogt"] .progress__bar {
+  background-color: var(--color-primary);
+}
+
+[data-theme="tbogt"] .hero__parallax-layer--back {
+  filter: hue-rotate(270deg) saturate(1.2) brightness(1.1);
+}
+
+[data-theme="tbogt"] .quote-block {
+  border-left-color: var(--color-primary);
+}
+
+[data-theme="tbogt"] .quote-block::before {
+  color: var(--color-primary);
+}
+
+/* Transições suaves entre temas */
+body,
+.header,
+.card,
+.feature-card,
+.character-card,
+.district-card,
+.activity-card,
+.theme-card,
+.category-card,
+.special-vehicle,
+.tip-card,
+.btn,
+.hero__title-highlight,
+.section-header__title::after,
+.quote-block,
+.character-stat__fill,
+.vehicle-stat__fill,
+.progress__bar,
+.hero__parallax-layer--back {
+  transition: all var(--transition-medium);
+}
+
+/* Preferências de esquema de cores do sistema */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    /* Cores de fundo */
+    --color-bg-dark: #f5f5f5;
+    --color-bg-medium: #e9e9e9;
+    --color-bg-light: #ffffff;
+    
+    /* Cores de texto */
+    --color-text-primary: #333333;
+    --color-text-secondary: #555555;
+    --color-text-muted: #777777;
+    --color-text-highlight: var(--color-primary-dark);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    /* Cores de fundo */
+    --color-bg-dark: #121212;
+    --color-bg-medium: #1e1e1e;
+    --color-bg-light: #2d2d2d;
+    
+    /* Cores de texto */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-muted: #999999;
+    --color-text-highlight: var(--color-primary);
+  }
+}
+
+/* Animações específicas para cada tema */
+[data-theme="gta-iv"] .gta-glitch {
+  animation: glitchEffectBlue 2s infinite;
+}
+
+[data-theme="tlad"] .gta-glitch {
+  animation: glitchEffectRed 2s infinite;
+}
+
+[data-theme="tbogt"] .gta-glitch {
+  animation: glitchEffectPurple 2s infinite;
+}
+
+@keyframes glitchEffectBlue {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(74, 144, 226, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(74, 144, 226, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(74, 144, 226, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 255, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(74, 144, 226, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 255, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(74, 144, 226, 0.75),
+                0.05em 0 0 rgba(0, 255, 255, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(74, 144, 226, 0.75),
+                0.05em 0 0 rgba(0, 255, 255, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(74, 144, 226, 0.75),
+                -0.025em -0.025em 0 rgba(0, 255, 255, 0.75),
+                -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+@keyframes glitchEffectRed {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(193, 58, 58, 0.75),
+                -0.05em -0.025em 0 rgba(255, 100, 100, 0.75),
+                0.025em 0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(193, 58, 58, 0.75),
+                -0.05em -0.025em 0 rgba(255, 100, 100, 0.75),
+                0.025em 0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(193, 58, 58, 0.75),
+                0.025em 0.025em 0 rgba(255, 100, 100, 0.75),
+                -0.05em -0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(193, 58, 58, 0.75),
+                0.025em 0.025em 0 rgba(255, 100, 100, 0.75),
+                -0.05em -0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(193, 58, 58, 0.75),
+                0.05em 0 0 rgba(255, 100, 100, 0.75),
+                0 -0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(193, 58, 58, 0.75),
+                0.05em 0 0 rgba(255, 100, 100, 0.75),
+                0 -0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(193, 58, 58, 0.75),
+                -0.025em -0.025em 0 rgba(255, 100, 100, 0.75),
+                -0.025em -0.05em 0 rgba(100, 0, 0, 0.75);
+  }
+}
+
+@keyframes glitchEffectPurple {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(155, 89, 182, 0.75),
+                -0.05em -0.025em 0 rgba(200, 100, 255, 0.75),
+                0.025em 0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(155, 89, 182, 0.75),
+                -0.05em -0.025em 0 rgba(200, 100, 255, 0.75),
+                0.025em 0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(155, 89, 182, 0.75),
+                0.025em 0.025em 0 rgba(200, 100, 255, 0.75),
+                -0.05em -0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(155, 89, 182, 0.75),
+                0.025em 0.025em 0 rgba(200, 100, 255, 0.75),
+                -0.05em -0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(155, 89, 182, 0.75),
+                0.05em 0 0 rgba(200, 100, 255, 0.75),
+                0 -0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(155, 89, 182, 0.75),
+                0.05em 0 0 rgba(200, 100, 255, 0.75),
+                0 -0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(155, 89, 182, 0.75),
+                -0.025em -0.025em 0 rgba(200, 100, 255, 0.75),
+                -0.025em -0.05em 0 rgba(100, 0, 100, 0.75);
+  }
+}

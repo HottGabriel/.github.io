@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site complexo sobre GTA IV, com informações detalhadas sobre o jogo, personagens, Liberty City e muito mais">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, Niko Bellic, Liberty City, Rockstar Games, jogos, mundo aberto">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>GTA IV - O Universo de Liberty City</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item nav-menu__item--active"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar em Liberty City..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Grand Theft Auto <span class="hero__title-highlight">IV</span></h1>
+                    <p class="hero__subtitle">Explore o universo de Liberty City e a história de Niko Bellic</p>
+                    <div class="hero__actions">
+                        <a href="#about" class="btn btn--primary">Conheça o Jogo</a>
+                        <a href="characters.html" class="btn btn--outline">Personagens</a>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Sobre o Jogo -->
+        <section class="about" id="about">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Sobre o Jogo</h2>
+                    <p class="section-header__subtitle">Uma obra-prima da Rockstar Games</p>
+                </header>
+                
+                <div class="about__grid">
+                    <div class="about__content" data-aos="fade-right">
+                        <p class="about__text">Grand Theft Auto IV é um jogo eletrônico de ação-aventura desenvolvido pela Rockstar North e publicado pela Rockstar Games. É o sexto título principal da série Grand Theft Auto, lançado em 29 de abril de 2008 para PlayStation 3 e Xbox 360 e em 2 de dezembro do mesmo ano para Microsoft Windows.</p>
+                        
+                        <p class="about__text">O jogo se passa na cidade ficcional de Liberty City, uma recriação moderna e detalhada de Nova York. A história para um jogador segue o imigrante sérvio Niko Bellic e suas tentativas de escapar de seu passado enquanto está sob pressão de agiotas, criminosos de alto perfil e agências governamentais.</p>
+                        
+                        <p class="about__text">Com uma narrativa madura e complexa, GTA IV marcou uma mudança para um tom mais sério e realista em relação aos jogos anteriores da série, explorando temas como imigração, o sonho americano, vingança e redenção.</p>
+                        
+                        <div class="about__stats">
+                            <div class="stat-item">
+                                <div class="stat-item__number" data-count="2008">0</div>
+                                <div class="stat-item__label">Ano de Lançamento</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-item__number" data-count="94">0</div>
+                                <div class="stat-item__label">Metacritic Score</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-item__number" data-count="25">0</div>
+                                <div class="stat-item__label">Milhões de Cópias Vendidas</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about__image" data-aos="fade-left">
+                        <div class="image-reveal">
+                            <div class="image-reveal__inner">
+                                <!-- Placeholder para imagem do jogo -->
+                                <div class="image-placeholder image-placeholder--rectangle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Personagem Principal -->
+        <section class="character" id="niko">
+            <div class="container">
+                <div class="character__grid">
+                    <div class="character__image" data-aos="fade-right">
+                        <div class="image-reveal">
+                            <div class="image-reveal__inner">
+                                <!-- Placeholder para imagem do Niko Bellic -->
+                                <div class="image-placeholder image-placeholder--portrait"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="character__content" data-aos="fade-left">
+                        <header class="section-header section-header--left">
+                            <h2 class="section-header__title">Niko Bellic</h2>
+                            <p class="section-header__subtitle">O Protagonista</p>
+                        </header>
+                        
+                        <div class="character__quote">
+                            <blockquote>"Life is complicated. I killed people. Smuggled people. Sold people. Perhaps here... things will be different."</blockquote>
+                        </div>
+                        
+                        <p class="character__text">Niko Bellic é um veterano da Guerra dos Bálcãs que emigra para Liberty City em busca do sonho americano e para encontrar a pessoa que traiu sua unidade militar durante a guerra. Nascido na Sérvia, Niko cresceu em um ambiente difícil e teve uma vida marcada por violência e tragédia.</p>
+                        
+                        <p class="character__text">Chegando a Liberty City a bordo do cargueiro Platypus, Niko se reúne com seu primo Roman, que havia prometido uma vida de luxo e riqueza. No entanto, ele logo descobre que as histórias de Roman eram exageradas, e se vê envolvido no submundo do crime para proteger seu primo e buscar vingança contra aqueles que o traíram.</p>
+                        
+                        <p class="character__text">Apesar de sua natureza violenta, Niko é um personagem complexo com um forte senso de lealdade e um desejo de deixar seu passado para trás, tornando-se um dos protagonistas mais profundos e bem desenvolvidos da série Grand Theft Auto.</p>
+                        
+                        <div class="character__actions">
+                            <a href="characters.html" class="btn btn--primary">Conhecer Mais Personagens</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Liberty City -->
+        <section class="city" id="liberty">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Liberty City</h2>
+                    <p class="section-header__subtitle">Uma metrópole vibrante inspirada em Nova York</p>
+                </header>
+                
+                <div class="city__intro" data-aos="fade-up">
+                    <p>Liberty City é uma recriação detalhada e estilizada de Nova York, dividida em quatro distritos principais que representam os bairros da cidade real, além do estado vizinho de Alderney (inspirado em Nova Jersey).</p>
+                </div>
+                
+                <div class="city__map" data-aos="zoom-in">
+                    <!-- Placeholder para mapa interativo de Liberty City -->
+                    <div class="map-placeholder">
+                        <div class="map-placeholder__inner"></div>
+                    </div>
+                </div>
+                
+                <div class="city__districts">
+                    <div class="district-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="district-card__image">
+                            <!-- Placeholder para imagem de Algonquin -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="district-card__content">
+                            <h3 class="district-card__title">Algonquin</h3>
+                            <p class="district-card__subtitle">Inspirado em Manhattan</p>
+                            <p class="district-card__description">O coração de Liberty City, repleto de arranha-céus, atrações turísticas e vida noturna. Abriga locais icônicos como Star Junction (Times Square), Middle Park (Central Park) e Rotterdam Tower (Empire State Building).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="district-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="district-card__image">
+                            <!-- Placeholder para imagem de Broker -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="district-card__content">
+                            <h3 class="district-card__title">Broker</h3>
+                            <p class="district-card__subtitle">Inspirado em Brooklyn</p>
+                            <p class="district-card__description">Um distrito com caráter próprio, conhecido por seus brownstones e bairros de classe média. É onde Niko Bellic chega inicialmente a Liberty City e estabelece sua primeira base de operações.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="district-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="district-card__image">
+                            <!-- Placeholder para imagem de Dukes -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="district-card__content">
+                            <h3 class="district-card__title">Dukes</h3>
+                            <p class="district-card__subtitle">Inspirado em Queens</p>
+                            <p class="district-card__description">Uma área predominantemente residencial e etnicamente diversa, abriga o Aeroporto Internacional Francis e o estádio de baseball dos Liberty City Swingers. Apresenta arquitetura tradicional irlandesa, vitoriana e tudor.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="district-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="district-card__image">
+                            <!-- Placeholder para imagem de Bohan -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="district-card__content">
+                            <h3 class="district-card__title">Bohan</h3>
+                            <p class="district-card__subtitle">Inspirado em Bronx</p>
+                            <p class="district-card__description">O berço da cultura do rap e hip-hop em Liberty City, conhecido por sua forte presença latina. Consiste principalmente em projetos habitacionais deteriorados e é notório por suas altas taxas de criminalidade.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="city__actions">
+                    <a href="world.html" class="btn btn--primary">Explorar Liberty City</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Recursos do Jogo -->
+        <section class="features" id="features">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Recursos do Jogo</h2>
+                    <p class="section-header__subtitle">Inovações que revolucionaram a série</p>
+                </header>
+                
+                <div class="features__grid">
+                    <!-- Recurso 1 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Motor RAGE</h3>
+                        <p class="feature-card__description">GTA IV foi o primeiro jogo da série a utilizar o Rockstar Advanced Game Engine, trazendo física realista, iluminação dinâmica e animações mais naturais.</p>
+                    </article>
+                    
+                    <!-- Recurso 2 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Sistema de Amizades</h3>
+                        <p class="feature-card__description">Relacionamentos com personagens secundários que podem ser cultivados através de atividades sociais, oferecendo benefícios especiais e missões exclusivas.</p>
+                    </article>
+                    
+                    <!-- Recurso 3 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Escolhas Morais</h3>
+                        <p class="feature-card__description">Momentos-chave da história onde o jogador deve tomar decisões difíceis que afetam o desenvolvimento da narrativa e o destino dos personagens.</p>
+                    </article>
+                    
+                    <!-- Recurso 4 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4l3 3"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Mundo Vivo</h3>
+                        <p class="feature-card__description">Liberty City é uma metrópole vibrante com NPCs que seguem rotinas diárias, clima dinâmico, ciclo dia/noite e eventos aleatórios que tornam o mundo mais imersivo.</p>
+                    </article>
+                    
+                    <!-- Recurso 5 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                                <line x1="4" y1="22" x2="4" y2="15"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Estações de Rádio</h3>
+                        <p class="feature-card__description">Sistema de rádio com 19 estações diferentes, oferecendo mais de 200 músicas licenciadas, programas de talk show e comerciais que enriquecem a experiência de jogo.</p>
+                    </article>
+                    
+                    <!-- Recurso 6 -->
+                    <article class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="feature-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                                <line x1="6" y1="1" x2="6" y2="4"/>
+                                <line x1="10" y1="1" x2="10" y2="4"/>
+                                <line x1="14" y1="1" x2="14" y2="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-card__title">Sistema de Cobertura</h3>
+                        <p class="feature-card__description">Mecânica de combate revolucionária que permite ao jogador se proteger atrás de objetos durante tiroteios, adicionando profundidade estratégica às missões.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção DLCs -->
+        <section class="dlc" id="dlc">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Expansões</h2>
+                    <p class="section-header__subtitle">Histórias adicionais que expandem o universo de Liberty City</p>
+                </header>
+                
+                <div class="dlc__grid">
+                    <div class="dlc-card" data-aos="fade-right">
+                        <div class="dlc-card__image">
+                            <!-- Placeholder para imagem de The Lost and Damned -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="dlc-card__content">
+                            <h3 class="dlc-card__title">The Lost and Damned</h3>
+                            <p class="dlc-card__release">Lançado em 17 de fevereiro de 2009</p>
+                            <p class="dlc-card__description">Acompanhe a história de Johnny Klebitz, vice-presidente da gangue de motoqueiros The Lost MC, enquanto ele lida com conflitos internos, guerras territoriais e sua própria luta pessoal em Liberty City.</p>
+                            <ul class="dlc-card__features">
+                                <li>Novo protagonista: Johnny Klebitz</li>
+                                <li>Novas armas e veículos, com foco em motocicletas</li>
+                                <li>Missões que se cruzam com a história principal de GTA IV</li>
+                                <li>Novos modos multijogador e minijogos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="dlc-card" data-aos="fade-left">
+                        <div class="dlc-card__image">
+                            <!-- Placeholder para imagem de The Ballad of Gay Tony -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="dlc-card__content">
+                            <h3 class="dlc-card__title">The Ballad of Gay Tony</h3>
+                            <p class="dlc-card__release">Lançado em 29 de outubro de 2009</p>
+                            <p class="dlc-card__description">Viva a vida noturna de Liberty City como Luis Lopez, guarda-costas e sócio de Tony Prince (Gay Tony), proprietário dos clubes mais badalados da cidade, enquanto navega pelo mundo glamouroso e perigoso da alta sociedade.</p>
+                            <ul class="dlc-card__features">
+                                <li>Novo protagonista: Luis Fernando Lopez</li>
+                                <li>Missões espetaculares com paraquedismo e explosões</li>
+                                <li>Acesso a clubes noturnos exclusivos</li>
+                                <li>Novos veículos de luxo e armas avançadas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Galeria -->
+        <section class="gallery-preview" id="gallery">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Galeria</h2>
+                    <p class="section-header__subtitle">Imagens do universo de GTA IV</p>
+                </header>
+                
+                <div class="gallery-preview__grid">
+                    <!-- Imagem 1 -->
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                        <!-- Placeholder para imagem da galeria -->
+                        <div class="image-placeholder image-placeholder--square"></div>
+                        <div class="gallery-item__overlay">
+                            <span class="gallery-item__caption">Niko Bellic em Algonquin</span>
+                            <a href="gallery.html" class="gallery-item__link">Ver mais</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagem 2 -->
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                        <!-- Placeholder para imagem da galeria -->
+                        <div class="image-placeholder image-placeholder--square"></div>
+                        <div class="gallery-item__overlay">
+                            <span class="gallery-item__caption">Skyline de Liberty City</span>
+                            <a href="gallery.html" class="gallery-item__link">Ver mais</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagem 3 -->
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                        <!-- Placeholder para imagem da galeria -->
+                        <div class="image-placeholder image-placeholder--square"></div>
+                        <div class="gallery-item__overlay">
+                            <span class="gallery-item__caption">Perseguição policial</span>
+                            <a href="gallery.html" class="gallery-item__link">Ver mais</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Imagem 4 -->
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                        <!-- Placeholder para imagem da galeria -->
+                        <div class="image-placeholder image-placeholder--square"></div>
+                        <div class="gallery-item__overlay">
+                            <span class="gallery-item__caption">Roman e Niko</span>
+                            <a href="gallery.html" class="gallery-item__link">Ver mais</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-preview__actions">
+                    <a href="gallery.html" class="btn btn--primary">Ver Galeria Completa</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Pronto para explorar Liberty City?</h2>
+                    <p class="cta__text">Descubra todos os segredos, personagens e histórias que fazem de GTA IV um dos jogos mais aclamados de todos os tempos.</p>
+                    <div class="cta__actions">
+                        <a href="story.html" class="btn btn--primary btn--large">Conhecer a História</a>
+                        <a href="characters.html" class="btn btn--outline btn--large">Ver Personagens</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/map-interactive.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

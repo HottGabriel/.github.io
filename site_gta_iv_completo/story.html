@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a história completa de GTA IV, a jornada de Niko Bellic em Liberty City">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, Niko Bellic, Liberty City, história, enredo, missões">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>História - GTA IV</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando história de Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar em Liberty City..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--story" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">A História de <span class="hero__title-highlight">GTA IV</span></h1>
+                    <p class="hero__subtitle">A jornada de Niko Bellic em busca do sonho americano e vingança</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Introdução -->
+        <section class="story-intro" id="intro">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">O Sonho Americano</h2>
+                    <p class="section-header__subtitle">Uma nova vida em Liberty City</p>
+                </header>
+                
+                <div class="story-intro__content" data-aos="fade-up">
+                    <div class="story-intro__quote">
+                        <blockquote>"Life is complicated. I killed people. Smuggled people. Sold people. Perhaps here... things will be different."</blockquote>
+                        <cite>— Niko Bellic</cite>
+                    </div>
+                    
+                    <p class="story-intro__text">Grand Theft Auto IV conta a história de Niko Bellic, um veterano da Guerra dos Bálcãs que chega a Liberty City em busca do "sonho americano" prometido por seu primo Roman, e para encontrar e se vingar do homem que traiu sua unidade militar durante a guerra.</p>
+                    
+                    <p class="story-intro__text">Após passar sete meses no cargueiro Platypus, Niko finalmente chega a Liberty City em 2008, esperando encontrar a vida de luxo que Roman havia descrito em suas cartas e e-mails. No entanto, ele logo descobre que a realidade é bem diferente: Roman vive em um pequeno apartamento em Broker, administra uma empresa de táxi falida e está endividado com agiotas e criminosos locais.</p>
+                    
+                    <p class="story-intro__text">Apesar da decepção inicial, Niko decide ficar e ajudar seu primo, enquanto secretamente busca informações sobre Florian Cravic e Darko Brevic, os dois suspeitos de terem traído sua unidade militar. O que começa como uma simples busca por vingança e uma nova vida se transforma em uma jornada complexa pelo submundo criminal de Liberty City, envolvendo a máfia russa, gangues de rua, políticos corruptos e agências governamentais secretas.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Timeline -->
+        <section class="timeline" id="timeline">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">A Jornada de Niko</h2>
+                    <p class="section-header__subtitle">Os principais eventos da história</p>
+                </header>
+                
+                <div class="timeline__container">
+                    <!-- Evento 1 -->
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">Chegada a Liberty City</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Niko chega a Liberty City a bordo do cargueiro Platypus e se reúne com seu primo Roman. Ele descobre que as histórias de Roman sobre riqueza e sucesso eram exageradas, e que seu primo está endividado com agiotas.</p>
+                                <p>Niko começa a trabalhar para Roman em sua empresa de táxi enquanto se adapta à nova vida na cidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 2 -->
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">Envolvimento com a Máfia Russa</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Através de Roman, Niko conhece Vladimir Glebov, um agiota russo que trabalha para Mikhail Faustin. Após descobrir que Vlad estava tendo um caso com Mallorie, namorada de Roman, Niko o mata, atraindo a atenção de Faustin e seu associado Dimitri Rascalov.</p>
+                                <p>Niko começa a trabalhar para Faustin, realizando vários trabalhos criminosos pela cidade. Eventualmente, Dimitri convence Niko a matar Faustin, que estava se tornando instável e perigoso.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 3 -->
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">A Traição de Dimitri</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Após matar Faustin, Niko descobre que Dimitri o traiu ao se aliar com Ray Bulgarin, um traficante de pessoas do passado de Niko que acredita que ele roubou seu dinheiro. Niko escapa de uma emboscada, mas Dimitri e Bulgarin incendeiam o apartamento de Roman e sua empresa de táxi.</p>
+                                <p>Niko e Roman são forçados a se mudar para Bohan, onde começam a reconstruir suas vidas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 4 -->
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">Novos Contatos e Alianças</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Em Bohan, Niko conhece Manny Escuela e Elizabeta Torres, expandindo sua rede de contatos criminosos. Ele também começa a trabalhar para a família McReary, Playboy X e Dwayne Forge, realizando diversos trabalhos pelo submundo de Liberty City.</p>
+                                <p>Durante esse período, Roman é sequestrado por Dimitri, mas Niko consegue resgatá-lo. Após o resgate, Roman propõe a Niko e se mudarem para Algonquin.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 5 -->
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">Trabalho para o United Liberty Paper</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Niko é chantageado por uma agência governamental secreta conhecida como United Liberty Paper, que promete ajudá-lo a encontrar o traidor de sua unidade militar em troca de serviços. Niko realiza várias missões para a agência, eliminando supostos terroristas e ameaças à segurança nacional.</p>
+                                <p>Através de seus contatos, a agência eventualmente localiza Florian Cravic, agora vivendo como Bernie Crane, um homossexual assumido. Niko descobre que Bernie não foi o traidor.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 6 -->
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">A Família Pegorino</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Niko começa a trabalhar para Jimmy Pegorino, chefe de uma família mafiosa em Alderney que busca reconhecimento da Comissão. Através de Ray Boccino, um membro da família Pegorino, Niko participa de um roubo de diamantes que se entrelaça com as histórias de The Lost and Damned e The Ballad of Gay Tony.</p>
+                                <p>Pegorino eventualmente pede a Niko para fazer um acordo com Dimitri Rascalov, colocando-o em um dilema moral: fazer negócios com o homem que o traiu ou buscar vingança.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 7 -->
+                    <div class="timeline-item" data-aos="fade-right">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">Encontrando Darko Brevic</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>O United Liberty Paper finalmente localiza Darko Brevic e o traz para Liberty City. Niko confronta Darko e descobre que ele traiu a unidade militar por apenas $1.000 para sustentar seu vício em drogas. Niko enfrenta a difícil escolha de matar Darko ou poupá-lo, percebendo que a vingança pode não trazer a paz que ele busca.</p>
+                                <p>Este momento representa um ponto crucial no desenvolvimento do personagem de Niko, forçando-o a refletir sobre seu passado e futuro.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Evento 8 -->
+                    <div class="timeline-item" data-aos="fade-left">
+                        <div class="timeline-item__marker"></div>
+                        <div class="timeline-item__content">
+                            <h3 class="timeline-item__title">A Escolha Final</h3>
+                            <div class="timeline-item__image">
+                                <!-- Placeholder para imagem -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            <div class="timeline-item__text">
+                                <p>Niko deve escolher entre fazer o acordo com Dimitri (Acordo) ou buscar vingança (Vingança). Esta decisão leva a dois finais diferentes:</p>
+                                <p><strong>Acordo:</strong> Niko aceita trabalhar com Dimitri, mas é traído novamente. Durante o casamento de Roman, um assassino enviado por Dimitri tenta matar Niko, mas acaba matando Kate McReary. Niko, Roman e Little Jacob perseguem e matam Dimitri e Pegorino.</p>
+                                <p><strong>Vingança:</strong> Niko mata Dimitri, enfurecendo Pegorino. Durante o casamento de Roman, Pegorino tenta matar Niko, mas acaba matando Roman. Niko, Little Jacob e Bernie perseguem e matam Pegorino na Ilha da Felicidade.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Temas -->
+        <section class="themes" id="themes">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Temas Principais</h2>
+                    <p class="section-header__subtitle">As mensagens por trás da história</p>
+                </header>
+                
+                <div class="themes__grid">
+                    <!-- Tema 1 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">O Sonho Americano</h3>
+                        <p class="theme-card__description">GTA IV explora a realidade do "sonho americano" para imigrantes, contrastando as expectativas idealizadas com a dura realidade. Niko chega a Liberty City esperando riqueza e oportunidades, mas encontra crime, corrupção e dificuldades.</p>
+                    </div>
+                    
+                    <!-- Tema 2 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 3h-6l-2 4-2-4H6a4 4 0 0 0-4 4v13a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1V7a4 4 0 0 0-4-4z"/>
+                                <path d="M14 11.8V16"/>
+                                <path d="M10 11.8V16"/>
+                                <path d="M12 9v7"/>
+                                <path d="M8 9v7"/>
+                                <path d="M16 9v7"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">Vingança e Redenção</h3>
+                        <p class="theme-card__description">A busca de Niko por vingança contra o traidor de sua unidade militar é um tema central. O jogo questiona se a vingança traz paz ou apenas perpetua um ciclo de violência, oferecendo ao jogador a escolha de matar ou poupar Darko Brevic.</p>
+                    </div>
+                    
+                    <!-- Tema 3 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">Lealdade e Traição</h3>
+                        <p class="theme-card__description">As relações de Niko são marcadas por lealdade (a Roman, Little Jacob, Kate) e traição (Dimitri, Michelle/Karen). O jogo explora como a confiança é construída e quebrada, e como as traições do passado moldam as ações do presente.</p>
+                    </div>
+                    
+                    <!-- Tema 4 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">Amor e Perda</h3>
+                        <p class="theme-card__description">O relacionamento de Niko com Kate McReary representa a possibilidade de uma vida normal e feliz, mas o passado violento de Niko sempre ameaça destruir qualquer chance de felicidade. O jogo mostra como a violência inevitavelmente leva à perda de entes queridos.</p>
+                    </div>
+                    
+                    <!-- Tema 5 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">Guerra e Trauma</h3>
+                        <p class="theme-card__description">As experiências de Niko na Guerra dos Bálcãs o deixaram profundamente traumatizado. O jogo explora como o trauma de guerra afeta as pessoas muito depois do conflito terminar, e como a violência pode se tornar um ciclo difícil de quebrar.</p>
+                    </div>
+                    
+                    <!-- Tema 6 -->
+                    <div class="theme-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="theme-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+                            </svg>
+                        </div>
+                        <h3 class="theme-card__title">Escolhas e Consequências</h3>
+                        <p class="theme-card__description">GTA IV apresenta ao jogador escolhas morais que afetam o desenvolvimento da história. O jogo mostra que cada escolha tem consequências, muitas vezes inesperadas, e que nem sempre há uma opção "correta" em um mundo moralmente ambíguo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Conexões com DLCs -->
+        <section class="dlc-connections" id="dlc-connections">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Conexões com as Expansões</h2>
+                    <p class="section-header__subtitle">Como as histórias se entrelaçam</p>
+                </header>
+                
+                <div class="dlc-connections__grid">
+                    <div class="dlc-connection" data-aos="fade-right">
+                        <div class="dlc-connection__image">
+                            <!-- Placeholder para imagem de The Lost and Damned -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="dlc-connection__content">
+                            <h3 class="dlc-connection__title">The Lost and Damned</h3>
+                            <p class="dlc-connection__description">A história de Johnny Klebitz e The Lost MC se cruza com a de Niko em vários momentos:</p>
+                            <ul class="dlc-connection__list">
+                                <li>Johnny aparece durante a missão "Blow Your Cover" de Niko, quando ambos participam de um negócio de drogas com Elizabeta Torres que dá errado.</li>
+                                <li>The Lost MC está envolvida no roubo de diamantes que se torna parte central da trama de Niko com Ray Boccino.</li>
+                                <li>Johnny e Niko nunca trabalham diretamente juntos, mas suas ações afetam um ao outro indiretamente.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="dlc-connection" data-aos="fade-left">
+                        <div class="dlc-connection__image">
+                            <!-- Placeholder para imagem de The Ballad of Gay Tony -->
+                            <div class="image-placeholder image-placeholder--wide"></div>
+                        </div>
+                        <div class="dlc-connection__content">
+                            <h3 class="dlc-connection__title">The Ballad of Gay Tony</h3>
+                            <p class="dlc-connection__description">A história de Luis Lopez e Gay Tony se entrelaça com a de Niko em momentos cruciais:</p>
+                            <ul class="dlc-connection__list">
+                                <li>Luis está presente durante o roubo ao banco na missão "Three Leaf Clover" de Niko, como um refém.</li>
+                                <li>Os diamantes que passam pelas mãos de Niko são centrais na história de Luis, criando uma teia complexa de eventos.</li>
+                                <li>Luis e Niko se encontram brevemente durante a troca de diamantes no Libertonian Museum.</li>
+                                <li>O final de The Ballad of Gay Tony mostra a morte de Ray Bulgarin, um antagonista comum a ambos os personagens.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dlc-connections__diagram" data-aos="zoom-in">
+                    <h3 class="dlc-connections__diagram-title">Linha do Tempo Compartilhada</h3>
+                    <!-- Placeholder para diagrama de conexões entre as histórias -->
+                    <div class="diagram-placeholder">
+                        <div class="diagram-placeholder__inner"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Legado -->
+        <section class="legacy" id="legacy">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Legado Narrativo</h2>
+                    <p class="section-header__subtitle">O impacto da história de GTA IV</p>
+                </header>
+                
+                <div class="legacy__content" data-aos="fade-up">
+                    <p class="legacy__text">A narrativa de GTA IV representou uma mudança significativa para a série Grand Theft Auto, trazendo um tom mais sério, realista e maduro em comparação com os jogos anteriores. A história de Niko Bellic é frequentemente elogiada como uma das mais profundas e bem escritas da série, abordando temas complexos como imigração, trauma de guerra, o sonho americano e a natureza cíclica da violência.</p>
+                    
+                    <p class="legacy__text">O jogo foi pioneiro na introdução de escolhas morais que afetam o desenvolvimento da história, permitindo que os jogadores moldassem parcialmente a narrativa através de suas decisões. Esta abordagem influenciou não apenas jogos subsequentes da Rockstar, como Red Dead Redemption e GTA V, mas também outros jogos de mundo aberto que buscavam narrativas mais maduras e nuançadas.</p>
+                    
+                    <p class="legacy__text">A conexão entre as histórias do jogo base e suas duas expansões (The Lost and Damned e The Ballad of Gay Tony) criou um universo narrativo coeso e interconectado, onde os mesmos eventos são vistos de diferentes perspectivas. Esta técnica narrativa foi inovadora para a época e demonstrou o potencial dos videogames para contar histórias complexas e multifacetadas.</p>
+                    
+                    <p class="legacy__text">Embora GTA V tenha optado por um tom mais satírico e três protagonistas com histórias entrelaçadas, o impacto da abordagem narrativa de GTA IV continua sendo sentido na indústria de jogos, inspirando desenvolvedores a criar histórias mais maduras e personagens mais complexos em jogos de mundo aberto.</p>
+                </div>
+                
+                <div class="legacy__quotes">
+                    <div class="quote-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="quote-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+                                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+                            </svg>
+                        </div>
+                        <blockquote class="quote-card__text">"GTA IV é uma obra-prima narrativa que elevou o padrão para histórias em jogos de mundo aberto, apresentando um protagonista complexo e moralmente ambíguo em um mundo que reflete as contradições do sonho americano."</blockquote>
+                        <cite class="quote-card__author">— IGN, 2008</cite>
+                    </div>
+                    
+                    <div class="quote-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="quote-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+                                <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+                            </svg>
+                        </div>
+                        <blockquote class="quote-card__text">"A história de Niko Bellic permanece como um dos melhores exemplos de como os videogames podem abordar temas maduros e complexos, como imigração, trauma e a busca por redenção, de maneira significativa e impactante."</blockquote>
+                        <cite class="quote-card__author">— GameSpot, 10º Aniversário de GTA IV</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Conheça os Personagens de GTA IV</h2>
+                    <p class="cta__text">Descubra mais sobre os personagens complexos que povoam o mundo de Liberty City e suas histórias interconectadas.</p>
+                    <div class="cta__actions">
+                        <a href="characters.html" class="btn btn--primary btn--large">Ver Personagens</a>
+                        <a href="missions.html" class="btn btn--outline btn--large">Explorar Missões</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os personagens de GTA IV, suas histórias e relacionamentos em Liberty City">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, Niko Bellic, Roman Bellic, personagens, Liberty City">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Personagens - GTA IV</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando personagens de Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar personagens..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--characters" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Personagens de <span class="hero__title-highlight">GTA IV</span></h1>
+                    <p class="hero__subtitle">Conheça as figuras que habitam Liberty City</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Protagonista -->
+        <section class="protagonist" id="niko">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Protagonista</h2>
+                    <p class="section-header__subtitle">O anti-herói de Liberty City</p>
+                </header>
+                
+                <div class="protagonist__content">
+                    <div class="protagonist__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem do Niko Bellic -->
+                        <div class="image-placeholder image-placeholder--portrait"></div>
+                    </div>
+                    
+                    <div class="protagonist__info" data-aos="fade-left">
+                        <h3 class="protagonist__name">Niko Bellic</h3>
+                        <div class="protagonist__quote">
+                            <blockquote>"War is where the young and stupid are tricked by the old and bitter into killing each other."</blockquote>
+                        </div>
+                        
+                        <div class="protagonist__details">
+                            <div class="detail-item">
+                                <span class="detail-item__label">Origem:</span>
+                                <span class="detail-item__value">Sérvia (antiga Iugoslávia)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Idade:</span>
+                                <span class="detail-item__value">30 anos (aproximadamente)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Ocupação:</span>
+                                <span class="detail-item__value">Ex-soldado, Criminoso</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Dublador:</span>
+                                <span class="detail-item__value">Michael Hollick</span>
+                            </div>
+                        </div>
+                        
+                        <div class="protagonist__bio">
+                            <p>Niko Bellic é um veterano da Guerra dos Bálcãs que emigra para Liberty City em busca do sonho americano e para encontrar a pessoa que traiu sua unidade militar durante a guerra. Sua vida foi marcada por violência e tragédia, o que o tornou um homem cínico e pragmático.</p>
+                            
+                            <p>Apesar de sua natureza violenta, Niko possui um forte código moral e lealdade àqueles que considera amigos e família. Ele frequentemente questiona suas ações e busca uma forma de escapar do ciclo de violência que define sua vida, embora raramente encontre uma saída.</p>
+                            
+                            <p>Ao longo do jogo, Niko trabalha para diversos empregadores criminosos enquanto busca vingança e tenta construir uma nova vida. Suas experiências em Liberty City o forçam a confrontar seu passado e fazer escolhas difíceis que afetarão seu futuro e o das pessoas ao seu redor.</p>
+                        </div>
+                        
+                        <div class="protagonist__skills">
+                            <h4 class="protagonist__skills-title">Habilidades</h4>
+                            <div class="skills-grid">
+                                <div class="skill-bar">
+                                    <span class="skill-bar__label">Combate</span>
+                                    <div class="skill-bar__track">
+                                        <div class="skill-bar__fill" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar">
+                                    <span class="skill-bar__label">Direção</span>
+                                    <div class="skill-bar__track">
+                                        <div class="skill-bar__fill" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar">
+                                    <span class="skill-bar__label">Pilotagem</span>
+                                    <div class="skill-bar__track">
+                                        <div class="skill-bar__fill" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-bar">
+                                    <span class="skill-bar__label">Furtividade</span>
+                                    <div class="skill-bar__track">
+                                        <div class="skill-bar__fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Personagens Principais -->
+        <section class="main-characters" id="main-characters">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Personagens Principais</h2>
+                    <p class="section-header__subtitle">Figuras centrais na jornada de Niko</p>
+                </header>
+                
+                <div class="characters-grid">
+                    <!-- Roman Bellic -->
+                    <div class="character-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="character-card__image">
+                            <!-- Placeholder para imagem do Roman -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="character-card__content">
+                            <h3 class="character-card__name">Roman Bellic</h3>
+                            <div class="character-card__role">Primo de Niko</div>
+                            <div class="character-card__quote">
+                                <blockquote>"Cousin! Let's go bowling!"</blockquote>
+                            </div>
+                            <p class="character-card__description">Primo de Niko e seu único parente em Liberty City. Roman é otimista, sonhador e frequentemente se mete em problemas devido a seu vício em jogos de azar e tendência a exagerar. Ele administra uma empresa de táxi em Broker e foi quem convenceu Niko a vir para a América com promessas de riqueza e luxo.</p>
+                            <button class="character-card__expand" aria-label="Expandir informações sobre Roman Bellic">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="character-card__details">
+                            <div class="detail-item">
+                                <span class="detail-item__label">Origem:</span>
+                                <span class="detail-item__value">Sérvia (antiga Iugoslávia)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Ocupação:</span>
+                                <span class="detail-item__value">Proprietário de empresa de táxi</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Dublador:</span>
+                                <span class="detail-item__value">Jason Zumwalt</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Relacionamentos:</span>
+                                <span class="detail-item__value">Primo de Niko, Namorado/Marido de Mallorie Bardas</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Little Jacob -->
+                    <div class="character-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="character-card__image">
+                            <!-- Placeholder para imagem do Little Jacob -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="character-card__content">
+                            <h3 class="character-card__name">Little Jacob</h3>
+                            <div class="character-card__role">Traficante de armas jamaicano</div>
+                            <div class="character-card__quote">
+                                <blockquote>"Respect, breda. Real respect."</blockquote>
+                            </div>
+                            <p class="character-card__description">Um traficante de armas jamaicano e líder da gangue Hillside Posse. Jacob fala com um forte sotaque jamaicano e frequentemente usa gírias rastafári, tornando-o difícil de entender. Ele se torna um dos amigos mais leais de Niko, oferecendo suporte em momentos cruciais da história.</p>
+                            <button class="character-card__expand" aria-label="Expandir informações sobre Little Jacob">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="character-card__details">
+                            <div class="detail-item">
+                                <span class="detail-item__label">Origem:</span>
+                                <span class="detail-item__value">Jamaica</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Ocupação:</span>
+                                <span class="detail-item__value">Traficante de armas, Líder de gangue</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Dublador:</span>
+                                <span class="detail-item__value">Coolie Ranx</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Habilidade especial:</span>
+                                <span class="detail-item__value">Entrega de armas em qualquer local</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kate McReary -->
+                    <div class="character-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="character-card__image">
+                            <!-- Placeholder para imagem da Kate -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="character-card__content">
+                            <h3 class="character-card__name">Kate McReary</h3>
+                            <div class="character-card__role">Interesse romântico de Niko</div>
+                            <div class="character-card__quote">
+                                <blockquote>"I'm not like my brothers. I don't kill people."</blockquote>
+                            </div>
+                            <p class="character-card__description">A irmã mais nova da família McReary, Kate é diferente de seus irmãos criminosos. Ela é inteligente, compassiva e tenta se distanciar do estilo de vida criminoso de sua família. Kate representa para Niko a possibilidade de uma vida normal e um relacionamento genuíno.</p>
+                            <button class="character-card__expand" aria-label="Expandir informações sobre Kate McReary">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="character-card__details">
+                            <div class="detail-item">
+                                <span class="detail-item__label">Origem:</span>
+                                <span class="detail-item__value">Liberty City (Dukes)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Ocupação:</span>
+                                <span class="detail-item__value">Cuidadora</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Dubladora:</span>
+                                <span class="detail-item__value">Mary Donnelly</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Relacionamentos:</span>
+                                <span class="detail-item__value">Irmã de Patrick, Francis, Gerald e Derrick McReary</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Brucie Kibbutz -->
+                    <div class="character-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="character-card__image">
+                            <!-- Placeholder para imagem do Brucie -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="character-card__content">
+                            <h3 class="character-card__name">Brucie Kibbutz</h3>
+                            <div class="character-card__role">Empresário e entusiasta de fitness</div>
+                            <div class="character-card__quote">
+                                <blockquote>"I'm genetically different, baby!"</blockquote>
+                            </div>
+                            <p class="character-card__description">Um empresário excêntrico, entusiasta de fitness e viciado em esteroides. Brucie é hiperativo, narcisista e obcecado com ser "alpha". Apesar de sua personalidade exagerada, ele se torna um amigo leal de Niko e oferece missões de corridas de rua e passeios de helicóptero.</p>
+                            <button class="character-card__expand" aria-label="Expandir informações sobre Brucie Kibbutz">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="character-card__details">
+                            <div class="detail-item">
+                                <span class="detail-item__label">Origem:</span>
+                                <span class="detail-item__value">Liberty City (Algonquin)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Ocupação:</span>
+                                <span class="detail-item__value">Empresário, Entusiasta de fitness</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Dublador:</span>
+                                <span class="detail-item__value">Timothy Adams</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-item__label">Empresas:</span>
+                                <span class="detail-item__value">Brucie's Executive Lifestyle, Bull Shark Testosterone</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Antagonistas -->
+        <section class="antagonists" id="antagonists">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Antagonistas</h2>
+                    <p class="section-header__subtitle">Os vilões que cruzam o caminho de Niko</p>
+                </header>
+                
+                <div class="antagonists__grid">
+                    <!-- Dimitri Rascalov -->
+                    <div class="antagonist-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="antagonist-card__image">
+                            <!-- Placeholder para imagem do Dimitri -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                            <div class="antagonist-card__overlay">
+                                <div class="antagonist-card__danger">PERIGO</div>
+                            </div>
+                        </div>
+                        <div class="antagonist-card__content">
+                            <h3 class="antagonist-card__name">Dimitri Rascalov</h3>
+                            <div class="antagonist-card__role">Mafioso russo</div>
+                            <div class="antagonist-card__quote">
+                                <blockquote>"You think it's worth killing many people for revenge? Then you're just like me."</blockquote>
+                            </div>
+                            <p class="antagonist-card__description">Um mafioso russo que inicialmente trabalha como braço direito de Mikhail Faustin. Dimitri é manipulador, traiçoeiro e movido pela ganância. Ele trai Niko múltiplas vezes ao longo da história, tornando-se seu principal antagonista e representando a corrupção moral que Niko tenta evitar.</p>
+                            <div class="antagonist-card__traits">
+                                <div class="trait">
+                                    <span class="trait__label">Traição</span>
+                                    <div class="trait__meter" style="width: 95%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Ganância</span>
+                                    <div class="trait__meter" style="width: 90%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Crueldade</span>
+                                    <div class="trait__meter" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ray Bulgarin -->
+                    <div class="antagonist-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="antagonist-card__image">
+                            <!-- Placeholder para imagem do Bulgarin -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                            <div class="antagonist-card__overlay">
+                                <div class="antagonist-card__danger">PERIGO</div>
+                            </div>
+                        </div>
+                        <div class="antagonist-card__content">
+                            <h3 class="antagonist-card__name">Ray Bulgarin</h3>
+                            <div class="antagonist-card__role">Traficante de pessoas</div>
+                            <div class="antagonist-card__quote">
+                                <blockquote>"You think you can just leave my employment? The only way you leave is in a coffin."</blockquote>
+                            </div>
+                            <p class="antagonist-card__description">Um poderoso traficante de pessoas da Europa Oriental que tem um histórico com Niko. Bulgarin acredita que Niko o traiu e roubou seu dinheiro durante uma operação de contrabando que deu errado no Mar Adriático. Ele é implacável em sua busca por vingança contra Niko.</p>
+                            <div class="antagonist-card__traits">
+                                <div class="trait">
+                                    <span class="trait__label">Vingança</span>
+                                    <div class="trait__meter" style="width: 100%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Poder</span>
+                                    <div class="trait__meter" style="width: 90%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Influência</span>
+                                    <div class="trait__meter" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Jimmy Pegorino -->
+                    <div class="antagonist-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="antagonist-card__image">
+                            <!-- Placeholder para imagem do Pegorino -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                            <div class="antagonist-card__overlay">
+                                <div class="antagonist-card__danger">PERIGO</div>
+                            </div>
+                        </div>
+                        <div class="antagonist-card__content">
+                            <h3 class="antagonist-card__name">Jimmy Pegorino</h3>
+                            <div class="antagonist-card__role">Chefe da família Pegorino</div>
+                            <div class="antagonist-card__quote">
+                                <blockquote>"I gave you a chance to be a part of something. You blew it."</blockquote>
+                            </div>
+                            <p class="antagonist-card__description">O chefe de uma família mafiosa em Alderney que busca reconhecimento da Comissão. Pegorino é ambicioso e desesperado para elevar o status de sua família, o que o leva a tomar decisões questionáveis. Dependendo das escolhas do jogador, ele pode se tornar um antagonista principal no final do jogo.</p>
+                            <div class="antagonist-card__traits">
+                                <div class="trait">
+                                    <span class="trait__label">Ambição</span>
+                                    <div class="trait__meter" style="width: 95%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Desespero</span>
+                                    <div class="trait__meter" style="width: 80%"></div>
+                                </div>
+                                <div class="trait">
+                                    <span class="trait__label">Impulsividade</span>
+                                    <div class="trait__meter" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Empregadores -->
+        <section class="employers" id="employers">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Empregadores</h2>
+                    <p class="section-header__subtitle">Figuras que contratam Niko para trabalhos</p>
+                </header>
+                
+                <div class="employers__tabs">
+                    <div class="tabs">
+                        <div class="tabs__header">
+                            <button class="tabs__button tabs__button--active" data-tab="tab1">Máfia Russa</button>
+                            <button class="tabs__button" data-tab="tab2">Família McReary</button>
+                            <button class="tabs__button" data-tab="tab3">United Liberty Paper</button>
+                            <button class="tabs__button" data-tab="tab4">Família Pegorino</button>
+                            <div class="tabs__indicator"></div>
+                        </div>
+                        
+                        <div class="tabs__content">
+                            <!-- Tab 1: Máfia Russa -->
+                            <div class="tabs__panel tabs__panel--active" id="tab1">
+                                <div class="employer-group">
+                                    <div class="employer-card" data-aos="fade-up">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Faustin -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Mikhail Faustin</h3>
+                                            <div class="employer-card__role">Chefe da máfia russa em Hove Beach</div>
+                                            <p class="employer-card__description">Um chefe da máfia russa com problemas de controle de raiva e vício em drogas. Faustin é impulsivo, violento e paranoico, o que o leva a tomar decisões imprudentes que ameaçam seus negócios. Ele contrata Niko para eliminar pessoas que considera ameaças, muitas vezes por motivos triviais.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="employer-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Vlad -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Vladimir Glebov</h3>
+                                            <div class="employer-card__role">Agiota russo</div>
+                                            <p class="employer-card__description">Um agiota de baixo escalão que trabalha para Mikhail Faustin. Vlad é arrogante, abusivo e tem um caso com Mallorie, a namorada de Roman. Ele contrata Niko para alguns trabalhos menores antes de Niko descobrir sua traição e matá-lo, desencadeando eventos importantes na história.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 2: Família McReary -->
+                            <div class="tabs__panel" id="tab2">
+                                <div class="employer-group">
+                                    <div class="employer-card" data-aos="fade-up">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Patrick -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Patrick "Packie" McReary</h3>
+                                            <div class="employer-card__role">Criminoso irlandês</div>
+                                            <p class="employer-card__description">O membro mais jovem da família criminosa McReary. Packie é impulsivo, leal e tem problemas com drogas e álcool. Ele se torna um amigo próximo de Niko e o recruta para vários trabalhos, incluindo o famoso roubo ao banco de Liberty City. Packie também apresenta Niko a sua irmã Kate.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="employer-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Francis -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Francis McReary</h3>
+                                            <div class="employer-card__role">Comissário de polícia corrupto</div>
+                                            <p class="employer-card__description">O irmão mais velho de Packie e comissário de polícia corrupto. Francis é hipócrita, manipulador e obcecado com sua imagem pública. Ele contrata Niko para eliminar pessoas que ameaçam expor sua corrupção, colocando Niko em uma posição moralmente ambígua de trabalhar para a lei e contra ela simultaneamente.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="employer-card" data-aos="fade-up" data-aos-delay="200">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Derrick -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Derrick McReary</h3>
+                                            <div class="employer-card__role">Ex-terrorista do IRA</div>
+                                            <p class="employer-card__description">O irmão mais velho da família McReary e ex-membro do IRA. Derrick é depressivo, viciado em heroína e assombrado por seu passado violento. Ele retorna a Liberty City após anos no exílio e contrata Niko para ajudá-lo a resolver assuntos pendentes, incluindo eliminar antigos associados que poderiam expô-lo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 3: United Liberty Paper -->
+                            <div class="tabs__panel" id="tab3">
+                                <div class="employer-group">
+                                    <div class="employer-card" data-aos="fade-up">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do UL Paper Contact -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Contato do UL Paper</h3>
+                                            <div class="employer-card__role">Agente governamental</div>
+                                            <p class="employer-card__description">Um agente anônimo de uma agência governamental secreta que se apresenta como funcionário da United Liberty Paper. Ele é frio, calculista e manipulador, usando a situação de imigração de Niko para chantageá-lo a realizar trabalhos para a agência. Em troca, ele promete ajudar Niko a encontrar o traidor de sua unidade militar.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="employer-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem da Michelle/Karen -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Michelle/Karen</h3>
+                                            <div class="employer-card__role">Agente infiltrada</div>
+                                            <p class="employer-card__description">Inicialmente apresentada como "Michelle", uma mulher comum que Niko conhece através de Mallorie, ela é na verdade Karen, uma agente do governo infiltrada para monitorar Niko. Após revelar sua verdadeira identidade, ela serve como conexão entre Niko e o United Liberty Paper, forçando-o a trabalhar para a agência.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Tab 4: Família Pegorino -->
+                            <div class="tabs__panel" id="tab4">
+                                <div class="employer-group">
+                                    <div class="employer-card" data-aos="fade-up">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Ray Boccino -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Ray Boccino</h3>
+                                            <div class="employer-card__role">Caporegime da família Pegorino</div>
+                                            <p class="employer-card__description">Um mafioso ambicioso que trabalha para Jimmy Pegorino. Ray é ganancioso, traiçoeiro e sempre procurando maneiras de subir na hierarquia da máfia. Ele contrata Niko para vários trabalhos, incluindo o roubo de diamantes, e ajuda Niko a encontrar Florian Cravic em troca de seus serviços.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="employer-card" data-aos="fade-up" data-aos-delay="100">
+                                        <div class="employer-card__image">
+                                            <!-- Placeholder para imagem do Phil Bell -->
+                                            <div class="image-placeholder image-placeholder--portrait"></div>
+                                        </div>
+                                        <div class="employer-card__content">
+                                            <h3 class="employer-card__name">Phil Bell</h3>
+                                            <div class="employer-card__role">Associado da família Pegorino</div>
+                                            <p class="employer-card__description">Um associado da família Pegorino com ascendência irlandesa e italiana. Phil é cauteloso, pragmático e mais racional que seus colegas mafiosos. Ele contrata Niko para várias missões e, diferentemente de muitos outros empregadores, trata Niko com respeito e honestidade, criando uma relação de trabalho mais saudável.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Personagens Secundários -->
+        <section class="secondary-characters" id="secondary-characters">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Personagens Secundários</h2>
+                    <p class="section-header__subtitle">Figuras que enriquecem o mundo de Liberty City</p>
+                </header>
+                
+                <div class="character-grid">
+                    <!-- Mallorie Bardas -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem da Mallorie -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Mallorie Bardas</h3>
+                            <p class="mini-card__role">Namorada/Esposa de Roman</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Namorada porto-riquenha de Roman que trabalha em sua empresa de táxi. Mallorie é leal, prática e serve como uma âncora emocional para Roman. Ela apresenta Niko a vários personagens importantes, incluindo Elizabeta Torres e Michelle/Karen.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dwayne Forge -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="150">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Dwayne -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Dwayne Forge</h3>
+                            <p class="mini-card__role">Ex-traficante</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Um ex-traficante que passou anos na prisão. Dwayne é depressivo e tem dificuldade em se adaptar ao mundo que mudou durante sua ausência. Ele forma uma conexão com Niko baseada em suas experiências compartilhadas de perda e desilusão.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Playboy X -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Playboy X -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Playboy X</h3>
+                            <p class="mini-card__role">Traficante de drogas</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Um traficante de drogas ambicioso que assumiu os negócios de Dwayne durante sua prisão. Playboy X tenta se reinventar como um empresário legítimo enquanto mantém suas operações criminosas. Ele coloca Niko em um dilema moral ao pedir que ele mate seu antigo mentor, Dwayne.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Elizabeta Torres -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="250">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem da Elizabeta -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Elizabeta Torres</h3>
+                            <p class="mini-card__role">Traficante de drogas</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Uma poderosa traficante de drogas porto-riquenha em Bohan. Elizabeta é paranoica, imprevisível e conhecida por suas festas extravagantes. Ela contrata Niko para proteger negócios de drogas e eliminar ameaças, mas eventualmente é presa, encerrando sua linha de missões.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bernie Crane -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Bernie -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Bernie Crane</h3>
+                            <p class="mini-card__role">Ex-soldado, ativista gay</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Anteriormente conhecido como Florian Cravic, Bernie é um ex-soldado da unidade de Niko que agora vive como um homossexual assumido em Liberty City. Ele é extravagante, dramático e tem um relacionamento secreto com um político homofóbico. Niko o protege de ameaças após descobrir que ele não foi o traidor.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Manny Escuela -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="350">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Manny -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Manny Escuela</h3>
+                            <p class="mini-card__role">Ex-gangster, ativista comunitário</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Um ex-gangster que tenta limpar as ruas de Bohan enquanto filma um documentário sobre seus esforços. Manny é narcisista e mais preocupado com sua imagem do que com mudanças reais. Ele contrata Niko para eliminar traficantes locais, mas acaba sendo morto por Elizabeta Torres.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Darko Brevic -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Darko -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Darko Brevic</h3>
+                            <p class="mini-card__role">Traidor da unidade militar</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">O homem que traiu a unidade militar de Niko durante a guerra, vendendo seus companheiros por apenas $1.000 para sustentar seu vício em drogas. Darko é um homem quebrado, viciado e suicida quando Niko finalmente o encontra, forçando o protagonista a decidir se a vingança vale a pena.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Jon Gravelli -->
+                    <div class="mini-card" data-aos="fade-up" data-aos-delay="450">
+                        <div class="mini-card__image">
+                            <!-- Placeholder para imagem do Gravelli -->
+                            <div class="image-placeholder image-placeholder--square"></div>
+                        </div>
+                        <div class="mini-card__content">
+                            <h3 class="mini-card__name">Jon Gravelli</h3>
+                            <p class="mini-card__role">Chefe da família Gambetti</p>
+                        </div>
+                        <div class="mini-card__overlay">
+                            <p class="mini-card__description">Um idoso chefe da máfia que está morrendo em um hospital. Gravelli é poderoso, respeitado e tem conexões com o governo americano. Ele contrata Niko através do United Liberty Paper para eliminar ameaças aos interesses americanos, incluindo a máfia russa e traficantes coreanos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Mapa de Relacionamentos -->
+        <section class="relationships" id="relationships">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Mapa de Relacionamentos</h2>
+                    <p class="section-header__subtitle">Como os personagens se conectam</p>
+                </header>
+                
+                <div class="relationships__map" data-aos="zoom-in">
+                    <!-- Placeholder para mapa de relacionamentos interativo -->
+                    <div class="map-placeholder">
+                        <div class="map-placeholder__inner"></div>
+                    </div>
+                </div>
+                
+                <div class="relationships__legend">
+                    <div class="legend-item">
+                        <span class="legend-item__color legend-item__color--family"></span>
+                        <span class="legend-item__label">Família</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-item__color legend-item__color--friend"></span>
+                        <span class="legend-item__label">Amizade</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-item__color legend-item__color--business"></span>
+                        <span class="legend-item__label">Negócios</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-item__color legend-item__color--enemy"></span>
+                        <span class="legend-item__label">Inimizade</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-item__color legend-item__color--romance"></span>
+                        <span class="legend-item__label">Romance</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Personagens das DLCs -->
+        <section class="dlc-characters" id="dlc-characters">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Personagens das Expansões</h2>
+                    <p class="section-header__subtitle">Protagonistas de The Lost and Damned e The Ballad of Gay Tony</p>
+                </header>
+                
+                <div class="dlc-characters__grid">
+                    <!-- Johnny Klebitz -->
+                    <div class="dlc-character" data-aos="fade-right">
+                        <div class="dlc-character__image">
+                            <!-- Placeholder para imagem do Johnny -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="dlc-character__content">
+                            <div class="dlc-character__badge">The Lost and Damned</div>
+                            <h3 class="dlc-character__name">Johnny Klebitz</h3>
+                            <div class="dlc-character__role">Vice-presidente do The Lost MC</div>
+                            <div class="dlc-character__quote">
+                                <blockquote>"We're The Lost, not the Damned."</blockquote>
+                            </div>
+                            <p class="dlc-character__description">Protagonista de The Lost and Damned, Johnny é o vice-presidente da gangue de motoqueiros The Lost MC. Ele é mais racional e pragmático que o presidente Billy Grey, tentando manter a paz e os negócios funcionando enquanto Billy estava preso. Johnny luta para manter a gangue unida enquanto enfrenta conflitos internos e guerras territoriais.</p>
+                            <p class="dlc-character__description">Sua história se cruza com a de Niko em vários momentos, incluindo o negócio de drogas com Elizabeta Torres e o roubo de diamantes. Johnny é um personagem complexo, dividido entre sua lealdade à gangue e seu reconhecimento de que o estilo de vida dos motoqueiros está desaparecendo.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Luis Lopez -->
+                    <div class="dlc-character" data-aos="fade-left">
+                        <div class="dlc-character__image">
+                            <!-- Placeholder para imagem do Luis -->
+                            <div class="image-placeholder image-placeholder--portrait"></div>
+                        </div>
+                        <div class="dlc-character__content">
+                            <div class="dlc-character__badge">The Ballad of Gay Tony</div>
+                            <h3 class="dlc-character__name">Luis Fernando Lopez</h3>
+                            <div class="dlc-character__role">Guarda-costas e sócio de Gay Tony</div>
+                            <div class="dlc-character__quote">
+                                <blockquote>"I'm Luis Lopez. I work for Tony Prince."</blockquote>
+                            </div>
+                            <p class="dlc-character__description">Protagonista de The Ballad of Gay Tony, Luis é um ex-traficante de drogas que se tornou guarda-costas e sócio de Tony Prince (Gay Tony), proprietário de clubes noturnos. Luis navega pelo mundo glamouroso e perigoso da vida noturna de Liberty City, equilibrando sua lealdade a Tony, suas responsabilidades familiares e suas conexões com o submundo criminal.</p>
+                            <p class="dlc-character__description">Sua história se cruza com a de Niko durante o roubo ao banco e a troca de diamantes no Libertonian Museum. Luis representa um lado diferente de Liberty City, focado no luxo, extravagância e excessos da vida noturna, em contraste com a experiência mais sombria de Niko.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Explore Liberty City</h2>
+                    <p class="cta__text">Descubra os distritos, pontos turísticos e segredos da cidade que nunca dorme.</p>
+                    <div class="cta__actions">
+                        <a href="world.html" class="btn btn--primary btn--large">Mundo Aberto</a>
+                        <a href="vehicles.html" class="btn btn--outline btn--large">Veículos</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

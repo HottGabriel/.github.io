@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore as missões de GTA IV, incluindo a história principal, missões secundárias e atividades">
+    <meta name="keywords" content="GTA IV, Grand Theft Auto IV, missões, história, Niko Bellic, Liberty City, missões secundárias">
+    <meta name="author" content="Manus">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Preconecta com origens de recursos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Favicon e ícones -->
+    <link rel="icon" href="assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/icons/apple-touch-icon.png">
+    
+    <!-- Folhas de estilo -->
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    
+    <!-- Fontes -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Manifesto PWA -->
+    <link rel="manifest" href="manifest.json">
+    
+    <title>Missões - GTA IV</title>
+</head>
+<body class="loading" data-theme="dark">
+    <!-- Tela de carregamento -->
+    <div class="preloader">
+        <div class="preloader__spinner"></div>
+        <p class="preloader__text">Carregando missões de Liberty City...</p>
+    </div>
+
+    <!-- Barra de progresso de leitura -->
+    <div class="progress-bar" id="readingProgress"></div>
+    
+    <!-- Cabeçalho -->
+    <header class="header" id="mainHeader">
+        <div class="container header__container">
+            <div class="header__logo">
+                <a href="index.html" class="logo">
+                    <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                </a>
+            </div>
+            
+            <nav class="header__nav" aria-label="Navegação principal">
+                <button class="nav-toggle" aria-label="Alternar menu" aria-expanded="false" aria-controls="mainNav">
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                    <span class="nav-toggle__bar"></span>
+                </button>
+                
+                <ul class="nav-menu" id="mainNav">
+                    <li class="nav-menu__item"><a href="index.html" class="nav-menu__link">Home</a></li>
+                    <li class="nav-menu__item"><a href="story.html" class="nav-menu__link">História</a></li>
+                    <li class="nav-menu__item"><a href="characters.html" class="nav-menu__link">Personagens</a></li>
+                    <li class="nav-menu__item"><a href="world.html" class="nav-menu__link">Mundo Aberto</a></li>
+                    <li class="nav-menu__item"><a href="vehicles.html" class="nav-menu__link">Veículos</a></li>
+                    <li class="nav-menu__item nav-menu__item--active"><a href="missions.html" class="nav-menu__link">Missões</a></li>
+                    <li class="nav-menu__item"><a href="gallery.html" class="nav-menu__link nav-menu__link--highlight">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24">
+                        <path d="M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.65 0-3 1.35-3 3s1.35 3 3 3 3-1.35 3-3-1.35-3-3-3zm0-3V3M12 21v-3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48l2.12 2.12m0-12.72l-2.12 2.12m-8.48 8.48l-2.12 2.12"/>
+                    </svg>
+                    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="search-toggle" aria-label="Abrir pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Formulário de pesquisa -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-overlay__close" aria-label="Fechar pesquisa">×</button>
+        <div class="search-overlay__content">
+            <form class="search-form">
+                <input type="search" class="search-form__input" placeholder="Pesquisar missões..." aria-label="Pesquisar">
+                <button type="submit" class="search-form__submit" aria-label="Enviar pesquisa">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <main>
+        <!-- Hero Section com Parallax -->
+        <section class="hero hero--missions" id="hero">
+            <div class="hero__parallax-container">
+                <div class="hero__parallax-layer hero__parallax-layer--back"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--middle"></div>
+                <div class="hero__parallax-layer hero__parallax-layer--front"></div>
+            </div>
+            <div class="container hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Missões de <span class="hero__title-highlight">GTA IV</span></h1>
+                    <p class="hero__subtitle">A jornada de Niko Bellic em Liberty City</p>
+                </div>
+            </div>
+            <div class="hero__scroll-indicator">
+                <span class="hero__scroll-text">Role para baixo</span>
+                <span class="hero__scroll-icon"></span>
+            </div>
+        </section>
+        
+        <!-- Seção Introdução -->
+        <section class="missions-intro" id="intro">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">A Busca por Vingança e Redenção</h2>
+                    <p class="section-header__subtitle">Uma história sombria e realista</p>
+                </header>
+                
+                <div class="missions-intro__content" data-aos="fade-up">
+                    <div class="missions-intro__quote">
+                        <blockquote>"War is when the young and stupid are tricked by the old and bitter into killing each other."</blockquote>
+                        <cite>— Niko Bellic</cite>
+                    </div>
+                    
+                    <p class="missions-intro__text">GTA IV apresenta uma das narrativas mais maduras e complexas da série, com mais de 90 missões principais que contam a história de Niko Bellic, um veterano de guerra dos Balcãs que chega a Liberty City em busca do sonho americano e de vingança contra aqueles que o traíram no passado. Ao contrário dos jogos anteriores da série, GTA IV adota um tom mais sombrio e realista, explorando temas como imigração, trauma de guerra, lealdade familiar e o lado obscuro do sonho americano.</p>
+                    
+                    <p class="missions-intro__text">As missões principais são organizadas em linhas narrativas conectadas a diferentes personagens que Niko conhece ao longo de sua jornada. Cada personagem oferece missões que não apenas avançam a história principal, mas também revelam mais sobre o passado de Niko e o mundo corrupto de Liberty City. Muitas missões apresentam escolhas morais que afetam o desenrolar da história e levam a diferentes finais.</p>
+                    
+                    <p class="missions-intro__text">Além das missões principais, o jogo oferece uma grande variedade de atividades secundárias, desde missões para personagens aleatórios encontrados nas ruas até trabalhos paralelos como taxista, vigilante ou paramédico. Estas atividades expandem a experiência de jogo e permitem que os jogadores explorem diferentes aspectos da vida em Liberty City.</p>
+                </div>
+                
+                <div class="missions-intro__stats">
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">91</div>
+                        <div class="stat-card__label">Missões Principais</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">15</div>
+                        <div class="stat-card__label">Personagens que Dão Missões</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">20</div>
+                        <div class="stat-card__label">Encontros Aleatórios</div>
+                    </div>
+                    
+                    <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </div>
+                        <div class="stat-card__value">10+</div>
+                        <div class="stat-card__label">Atividades Secundárias</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Estrutura de Missões -->
+        <section class="mission-structure" id="structure">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Estrutura de Missões</h2>
+                    <p class="section-header__subtitle">Como a narrativa se desenvolve</p>
+                </header>
+                
+                <div class="mission-structure__content">
+                    <div class="mission-structure__image" data-aos="fade-right">
+                        <!-- Placeholder para imagem de estrutura de missões -->
+                        <div class="image-placeholder image-placeholder--wide"></div>
+                    </div>
+                    
+                    <div class="mission-structure__info" data-aos="fade-left">
+                        <p class="mission-structure__text">As missões em GTA IV são organizadas em uma estrutura narrativa complexa que se ramifica à medida que Niko conhece novos personagens e se envolve mais profundamente no submundo criminal de Liberty City. Diferente de jogos anteriores da série, as missões são apresentadas de forma mais cinematográfica, com cutscenes extensas que desenvolvem os personagens e a trama.</p>
+                        
+                        <div class="mission-structure__phases">
+                            <div class="mission-phase">
+                                <h3 class="mission-phase__title">Fase 1: Chegada a Liberty City</h3>
+                                <p class="mission-phase__description">As primeiras missões introduzem Niko à vida em Liberty City através de seu primo Roman. Niko ajuda Roman com sua empresa de táxis e começa a lidar com agiotas locais e gangues menores. Esta fase estabelece as mecânicas básicas do jogo e apresenta personagens iniciais como Roman, Mallorie, Vlad e Little Jacob.</p>
+                            </div>
+                            
+                            <div class="mission-phase">
+                                <h3 class="mission-phase__title">Fase 2: Ascensão no Submundo</h3>
+                                <p class="mission-phase__description">Após resolver os problemas iniciais de Roman, Niko começa a trabalhar para figuras mais importantes do crime organizado, como Mikhail Faustin, Dimitri Rascalov e a família Pegorino. Nesta fase, Niko também conhece personagens importantes como Brucie Kibbutz, Manny Escuela e Elizabeta Torres, expandindo sua rede de contatos e oportunidades.</p>
+                            </div>
+                            
+                            <div class="mission-phase">
+                                <h3 class="mission-phase__title">Fase 3: Conexões Governamentais</h3>
+                                <p class="mission-phase__description">A narrativa se complica quando Niko começa a trabalhar para agentes corruptos do governo, como Francis McReary (LCPD) e United Liberty Paper (uma fachada para a IAA, paródia da CIA). Estas conexões prometem ajudar Niko a encontrar o homem que ele procura, mas o envolvem em operações cada vez mais perigosas e moralmente ambíguas.</p>
+                            </div>
+                            
+                            <div class="mission-phase">
+                                <h3 class="mission-phase__title">Fase 4: Escolhas e Consequências</h3>
+                                <p class="mission-phase__description">Na parte final do jogo, Niko enfrenta várias escolhas morais significativas que afetam o rumo da história. Decisões como poupar ou matar certos personagens têm consequências reais na narrativa. A busca por vingança de Niko finalmente chega ao clímax, mas não sem um alto preço pessoal.</p>
+                            </div>
+                            
+                            <div class="mission-phase">
+                                <h3 class="mission-phase__title">Fase 5: Finais Alternativos</h3>
+                                <p class="mission-phase__description">O jogo culmina em uma escolha final que leva a dois possíveis desfechos para a história de Niko. Ambos os finais são agridoces, refletindo o tom mais maduro e realista do jogo, onde não existem vitórias completas ou finais perfeitamente felizes.</p>
+                            </div>
+                        </div>
+                        
+                        <p class="mission-structure__text">Esta estrutura narrativa mais complexa e ramificada foi uma inovação para a série GTA, introduzindo elementos de jogabilidade não-linear e consequências para as escolhas do jogador que influenciaram jogos posteriores da Rockstar, como Red Dead Redemption e GTA V.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Missões Principais -->
+        <section class="main-missions" id="main">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Missões Principais</h2>
+                    <p class="section-header__subtitle">A jornada completa de Niko Bellic</p>
+                </header>
+                
+                <div class="mission-timeline">
+                    <!-- Roman Bellic -->
+                    <div class="mission-group" data-aos="fade-up">
+                        <div class="mission-group__header">
+                            <div class="mission-group__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="mission-group__name">Roman Bellic</h3>
+                            <div class="mission-group__location">Broker</div>
+                        </div>
+                        
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-item__number">1</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">The Cousins Bellic</h4>
+                                    <p class="mission-item__description">Missão introdutória. Niko chega a Liberty City e se encontra com seu primo Roman, que o leva para seu apartamento em Broker.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">2</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">It's Your Call</h4>
+                                    <p class="mission-item__description">Niko leva Roman para a empresa de táxis e depois o protege de agiotas que estão cobrando dívidas.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">3</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Three's a Crowd</h4>
+                                    <p class="mission-item__description">Niko leva Roman para buscar sua namorada Mallorie e seu colega de trabalho Vlad, introduzindo tensões futuras.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--more">
+                                <div class="mission-item__content">
+                                    <button class="btn btn--text mission-item__expand-btn">Ver mais missões de Roman</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">4</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Bleed Out</h4>
+                                    <p class="mission-item__description">Niko salva Roman de gangsters albaneses que o estão espancando, introduzindo o combate corpo a corpo.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">5</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Easy Fare</h4>
+                                    <p class="mission-item__description">Niko trabalha como taxista para Roman e acaba enfrentando mais albaneses em uma emboscada.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">6</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Jamaican Heat</h4>
+                                    <p class="mission-item__description">Roman apresenta Niko a Little Jacob, um traficante jamaicano que se tornará um aliado importante.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">7</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Uncle Vlad</h4>
+                                    <p class="mission-item__description">Niko confronta e mata Vlad após descobrir que ele está tendo um caso com a namorada de Roman, Mallorie.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">8</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Crime and Punishment</h4>
+                                    <p class="mission-item__description">Niko e Roman são sequestrados por Mikhail Faustin e Dimitri Rascalov como consequência do assassinato de Vlad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mikhail Faustin -->
+                    <div class="mission-group" data-aos="fade-up">
+                        <div class="mission-group__header">
+                            <div class="mission-group__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="mission-group__name">Mikhail Faustin</h3>
+                            <div class="mission-group__location">Broker/Dukes</div>
+                        </div>
+                        
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-item__number">9</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Do You Have Protection?</h4>
+                                    <p class="mission-item__description">Niko é forçado a trabalhar para Faustin e é enviado para extorquir dinheiro de uma loja de eletrônicos.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">10</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Final Destination</h4>
+                                    <p class="mission-item__description">Faustin ordena que Niko assassine um homem na estação de metrô Schottler em Broker.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">11</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">No Love Lost</h4>
+                                    <p class="mission-item__description">Niko persegue e mata o namorado da filha de Faustin, que é membro de uma gangue de motoqueiros.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--more">
+                                <div class="mission-item__content">
+                                    <button class="btn btn--text mission-item__expand-btn">Ver mais missões de Faustin</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">12</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Rigged to Blow</h4>
+                                    <p class="mission-item__description">Niko planta uma bomba em um caminhão e o dirige para um local específico, onde o explode remotamente.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item mission-item--hidden">
+                                <div class="mission-item__number">13</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">The Master and the Molotov</h4>
+                                    <p class="mission-item__description">Dimitri convence Niko a matar Faustin, alegando que ele se tornou muito instável e perigoso.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dimitri Rascalov -->
+                    <div class="mission-group" data-aos="fade-up">
+                        <div class="mission-group__header">
+                            <div class="mission-group__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="mission-group__name">Dimitri Rascalov</h3>
+                            <div class="mission-group__location">Broker</div>
+                        </div>
+                        
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-item__number">14</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Russian Revolution</h4>
+                                    <p class="mission-item__description">Niko vai encontrar Dimitri para receber seu pagamento, mas descobre que ele está trabalhando com Ray Bulgarin, um antigo inimigo de Niko da Europa. Niko escapa de uma emboscada.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">15</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Roman's Sorrow</h4>
+                                    <p class="mission-item__description">Niko descobre que Dimitri ordenou a queima do apartamento de Roman e da empresa de táxis. Os primos são forçados a se mudar para Bohan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Little Jacob -->
+                    <div class="mission-group" data-aos="fade-up">
+                        <div class="mission-group__header">
+                            <div class="mission-group__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="mission-group__name">Little Jacob</h3>
+                            <div class="mission-group__location">Broker/Dukes</div>
+                        </div>
+                        
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-item__number">16</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Concrete Jungle</h4>
+                                    <p class="mission-item__description">Niko ajuda Jacob em uma negociação de drogas que dá errado, resultando em um tiroteio com traficantes rivais.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">17</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Shadow</h4>
+                                    <p class="mission-item__description">Jacob pede a Niko para seguir um traficante rival até seu esconderijo e eliminar a gangue.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Manny Escuela -->
+                    <div class="mission-group" data-aos="fade-up">
+                        <div class="mission-group__header">
+                            <div class="mission-group__icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="mission-group__name">Manny Escuela</h3>
+                            <div class="mission-group__location">Bohan</div>
+                        </div>
+                        
+                        <div class="mission-list">
+                            <div class="mission-item">
+                                <div class="mission-item__number">18</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Escuela of the Streets</h4>
+                                    <p class="mission-item__description">Niko conhece Manny, um ex-gangster que agora faz documentários sobre a limpeza das ruas. Niko elimina traficantes para as câmeras de Manny.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">19</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">Street Sweeper</h4>
+                                    <p class="mission-item__description">Niko elimina mais traficantes para o documentário de Manny, desta vez em uma área de tráfico de drogas.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="mission-item">
+                                <div class="mission-item__number">20</div>
+                                <div class="mission-item__content">
+                                    <h4 class="mission-item__name">The Puerto Rican Connection</h4>
+                                    <p class="mission-item__description">Niko persegue e mata um traficante que está fugindo de trem, enquanto Manny filma de longe.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-timeline__more">
+                        <button class="btn btn--primary mission-timeline__expand-btn">Ver Todas as Missões Principais</button>
+                    </div>
+                    
+                    <div class="mission-timeline__hidden">
+                        <!-- Elizabeta Torres -->
+                        <div class="mission-group" data-aos="fade-up">
+                            <div class="mission-group__header">
+                                <div class="mission-group__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <h3 class="mission-group__name">Elizabeta Torres</h3>
+                                <div class="mission-group__location">Bohan</div>
+                            </div>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-item__number">21</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Luck of the Irish</h4>
+                                        <p class="mission-item__description">Niko protege Patrick McReary durante uma negociação de drogas, atirando de um telhado como franco-atirador.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">22</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Blow Your Cover</h4>
+                                        <p class="mission-item__description">Niko e Playboy X participam de uma negociação de drogas que é interrompida por uma operação policial, resultando em um intenso tiroteio.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">23</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">The Snow Storm</h4>
+                                        <p class="mission-item__description">Niko invade um hospital abandonado para recuperar cocaína, mas é surpreendido pela polícia e precisa fugir.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">24</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Have a Heart</h4>
+                                        <p class="mission-item__description">Elizabeta mata Manny e seu cinegrafista, e pede a Niko para se livrar dos corpos. Esta é a última missão de Elizabeta.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Playboy X -->
+                        <div class="mission-group" data-aos="fade-up">
+                            <div class="mission-group__header">
+                                <div class="mission-group__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <h3 class="mission-group__name">Playboy X</h3>
+                                <div class="mission-group__location">Algonquin</div>
+                            </div>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-item__number">25</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Deconstruction for Beginners</h4>
+                                        <p class="mission-item__description">Niko ajuda Playboy X a eliminar sindicalistas que estão impedindo um projeto de construção de seu parceiro de negócios.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">26</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Photo Shoot</h4>
+                                        <p class="mission-item__description">Niko tira fotos de traficantes de drogas para Playboy X usando um telefone celular especial.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">27</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">The Holland Play</h4>
+                                        <p class="mission-item__description">Niko deve escolher entre matar Playboy X ou seu mentor Dwayne Forge. A escolha afeta recompensas futuras e a narrativa.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Brucie Kibbutz -->
+                        <div class="mission-group" data-aos="fade-up">
+                            <div class="mission-group__header">
+                                <div class="mission-group__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <h3 class="mission-group__name">Brucie Kibbutz</h3>
+                                <div class="mission-group__location">Broker/Algonquin</div>
+                            </div>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-item__number">28</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Search and Delete</h4>
+                                        <p class="mission-item__description">Niko elimina um alvo para Brucie usando um helicóptero para localizá-lo.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">29</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Easy as Can Be</h4>
+                                        <p class="mission-item__description">Niko rouba um carro específico para Brucie, que o usa em seu negócio de exportação de veículos.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">30</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Out of the Closet</h4>
+                                        <p class="mission-item__description">Niko se passa por um encontro gay online para assassinar um alvo que Brucie acredita ter roubado dele.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">31</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">No. 1</h4>
+                                        <p class="mission-item__description">Niko compete em uma corrida de barcos contra o rival de Brucie, Lyle Rivas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- United Liberty Paper -->
+                        <div class="mission-group" data-aos="fade-up">
+                            <div class="mission-group__header">
+                                <div class="mission-group__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <h3 class="mission-group__name">United Liberty Paper</h3>
+                                <div class="mission-group__location">Algonquin</div>
+                            </div>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-item__number">32</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Wrong is Right</h4>
+                                        <p class="mission-item__description">Niko localiza e mata um terrorista suspeito em Dukes para o contato misterioso do U.L. Paper.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">33</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Portrait of a Killer</h4>
+                                        <p class="mission-item__description">Niko identifica e elimina outro terrorista suspeito usando uma foto fornecida pelo U.L. Paper.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">34</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Dust Off</h4>
+                                        <p class="mission-item__description">Niko rouba um helicóptero Annihilator de uma base policial para o U.L. Paper.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">35</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Paper Trail</h4>
+                                        <p class="mission-item__description">Niko usa o helicóptero roubado para derrubar outro helicóptero que transporta um alvo do U.L. Paper.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Francis McReary -->
+                        <div class="mission-group" data-aos="fade-up">
+                            <div class="mission-group__header">
+                                <div class="mission-group__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                                <h3 class="mission-group__name">Francis McReary</h3>
+                                <div class="mission-group__location">Algonquin</div>
+                            </div>
+                            
+                            <div class="mission-list">
+                                <div class="mission-item">
+                                    <div class="mission-item__number">36</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Call and Collect</h4>
+                                        <p class="mission-item__description">Niko localiza e elimina um chantagista que está ameaçando Francis, um policial corrupto.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">37</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Final Interview</h4>
+                                        <p class="mission-item__description">Niko assassina um advogado que está prestes a testemunhar contra Francis, usando um rifle de precisão.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">38</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Holland Nights</h4>
+                                        <p class="mission-item__description">Niko persegue e mata um traficante de drogas chamado Clarence Little para Francis.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">39</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Lure</h4>
+                                        <p class="mission-item__description">Niko atrai um chantagista para uma armadilha e o elimina para Francis.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="mission-item">
+                                    <div class="mission-item__number">40</div>
+                                    <div class="mission-item__content">
+                                        <h4 class="mission-item__name">Blood Brothers</h4>
+                                        <p class="mission-item__description">Niko deve escolher entre matar Francis ou seu irmão Derrick durante um funeral. A escolha afeta missões e recompensas futuras.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="main-missions__note" data-aos="fade-up">
+                    <h3 class="main-missions__note-title">Escolhas Morais e Finais Alternativos</h3>
+                    <p class="main-missions__note-text">GTA IV introduziu um sistema de escolhas morais que afetam o desenrolar da história. Em momentos-chave, o jogador deve tomar decisões difíceis que têm consequências reais na narrativa. As escolhas mais significativas incluem:</p>
+                    
+                    <div class="moral-choices">
+                        <div class="moral-choice">
+                            <h4 class="moral-choice__title">Playboy X ou Dwayne Forge</h4>
+                            <p class="moral-choice__description">Niko deve escolher entre matar Playboy X, um traficante ambicioso, ou Dwayne Forge, seu mentor recém-saído da prisão. Matar Playboy recompensa Niko com seu apartamento e a amizade de Dwayne, enquanto matar Dwayne resulta em uma recompensa financeira menor.</p>
+                        </div>
+                        
+                        <div class="moral-choice">
+                            <h4 class="moral-choice__title">Francis McReary ou Derrick McReary</h4>
+                            <p class="moral-choice__description">Niko deve escolher entre matar Francis, um policial corrupto, ou seu irmão Derrick, um criminoso problemático. Matar Derrick mantém Francis como aliado, oferecendo ajuda para reduzir o nível de procurado, enquanto matar Francis elimina essa vantagem mas preserva Derrick.</p>
+                        </div>
+                        
+                        <div class="moral-choice">
+                            <h4 class="moral-choice__title">Acordo ou Vingança</h4>
+                            <p class="moral-choice__description">A escolha final e mais impactante do jogo. Niko deve escolher entre fazer um acordo com Dimitri Rascalov para um último trabalho lucrativo, ou seguir o caminho da vingança e matá-lo. Esta escolha determina qual dos dois finais o jogador verá, cada um com consequências trágicas diferentes.</p>
+                        </div>
+                    </div>
+                    
+                    <p class="main-missions__note-text">Estas escolhas morais, especialmente a decisão final, refletem os temas centrais do jogo: o custo da vingança, a impossibilidade de escapar do passado, e a natureza corrupta do sonho americano. Independentemente das escolhas feitas, o final de GTA IV é agridoce, sugerindo que a redenção completa pode ser impossível para alguém com o passado de Niko.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Missões Secundárias -->
+        <section class="side-missions" id="side">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Missões Secundárias</h2>
+                    <p class="section-header__subtitle">Expandindo a experiência de Liberty City</p>
+                </header>
+                
+                <div class="side-missions__content">
+                    <p class="side-missions__intro" data-aos="fade-up">Além da história principal, GTA IV oferece uma variedade de missões secundárias e atividades que enriquecem a experiência de jogo e permitem explorar diferentes aspectos de Liberty City. Estas missões não são necessárias para completar a história principal, mas oferecem recompensas únicas, revelam mais sobre o mundo do jogo e proporcionam horas adicionais de jogabilidade.</p>
+                    
+                    <div class="side-missions__categories">
+                        <!-- Encontros Aleatórios -->
+                        <div class="side-category" data-aos="fade-up">
+                            <div class="side-category__header">
+                                <div class="side-category__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 8v4M12 16h.01"/>
+                                    </svg>
+                                </div>
+                                <h3 class="side-category__title">Encontros Aleatórios</h3>
+                            </div>
+                            
+                            <div class="side-category__content">
+                                <p class="side-category__description">Uma das inovações de GTA IV foram os encontros aleatórios com personagens nas ruas de Liberty City. Estes eventos são marcados por um ponto de interrogação azul no mini-mapa e oferecem pequenas histórias com personagens únicos que Niko pode ajudar ou explorar.</p>
+                                
+                                <div class="side-category__examples">
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Brian Meech</h4>
+                                        <p class="side-mission__description">Um viciado em drogas que Niko encontra três vezes, acompanhando sua jornada da dependência à recuperação.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Mel</h4>
+                                        <p class="side-mission__description">Uma mulher que pede ajuda a Niko para lidar com um stalker, mas que na verdade está tentando enganá-lo.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Eddie Low</h4>
+                                        <p class="side-mission__description">Um serial killer perturbador que Niko encontra duas vezes, revelando uma das histórias mais sombrias do jogo.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Cherise Glover</h4>
+                                        <p class="side-mission__description">Uma mulher que pede ajuda a Niko para lidar com seu namorado abusivo. O jogador pode escolher matar ou poupar o namorado.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Jeff</h4>
+                                        <p class="side-mission__description">Um homem paranoico que acredita que sua esposa está traindo ele e pede a Niko para segui-la, levando a uma série de eventos cada vez mais perturbadores.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Atividades de Vigilante -->
+                        <div class="side-category" data-aos="fade-up">
+                            <div class="side-category__header">
+                                <div class="side-category__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="side-category__title">Atividades de Vigilante</h3>
+                            </div>
+                            
+                            <div class="side-category__content">
+                                <p class="side-category__description">Niko pode participar de várias atividades de vigilante que simulam trabalhos legítimos ou ilegais em Liberty City. Estas atividades são acessadas através de veículos específicos ou locais no mapa.</p>
+                                
+                                <div class="side-category__examples">
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Most Wanted</h4>
+                                        <p class="side-mission__description">Acessível através de computadores de carros de polícia, esta atividade envolve caçar e eliminar criminosos procurados em Liberty City.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Vigilante</h4>
+                                        <p class="side-mission__description">Similar ao Most Wanted, mas acessível através do computador de qualquer carro de polícia, envolvendo a perseguição de criminosos aleatórios.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Paramédico</h4>
+                                        <p class="side-mission__description">Acessível através de ambulâncias, esta atividade envolve resgatar pacientes feridos e levá-los ao hospital dentro do tempo limite.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Táxi</h4>
+                                        <p class="side-mission__description">Acessível através de táxis, esta atividade envolve transportar passageiros para seus destinos, com bônus por velocidade e direção suave.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Bombeiro</h4>
+                                        <p class="side-mission__description">Acessível através de caminhões de bombeiros, esta atividade envolve apagar incêndios em diferentes locais da cidade.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Atividades de Lazer -->
+                        <div class="side-category" data-aos="fade-up">
+                            <div class="side-category__header">
+                                <div class="side-category__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
+                                    </svg>
+                                </div>
+                                <h3 class="side-category__title">Atividades de Lazer</h3>
+                            </div>
+                            
+                            <div class="side-category__content">
+                                <p class="side-category__description">Liberty City oferece várias atividades de lazer que Niko pode participar sozinho ou com amigos e interesses românticos. Estas atividades ajudam a desenvolver relacionamentos e oferecem pequenos bônus.</p>
+                                
+                                <div class="side-category__examples">
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Boliche</h4>
+                                        <p class="side-mission__description">Disponível no Memory Lanes em Broker, o boliche é um mini-game jogável que pode ser desfrutado com amigos como Roman ou interesses românticos.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Dardos</h4>
+                                        <p class="side-mission__description">Disponível em vários bares pela cidade, o jogo de dardos é um mini-game de precisão que pode ser jogado com amigos.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Pool (Sinuca)</h4>
+                                        <p class="side-mission__description">Disponível em alguns bares, o pool é um mini-game detalhado que segue as regras do bilhar americano.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Clubes de Strip</h4>
+                                        <p class="side-mission__description">Niko pode visitar o clube de strip Triangle em Bohan, onde pode assistir a shows ou pagar por danças privadas.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Comédia</h4>
+                                        <p class="side-mission__description">O Split Sides Comedy Club em Algonquin apresenta shows de comédia com Ricky Gervais e Katt Williams que Niko pode assistir.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">TV</h4>
+                                        <p class="side-mission__description">Niko pode assistir a vários programas de TV satíricos em seu apartamento, incluindo desenhos animados, talk shows e reality shows.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Corridas e Desafios -->
+                        <div class="side-category" data-aos="fade-up">
+                            <div class="side-category__header">
+                                <div class="side-category__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M16 6l3 4h2a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1a3 3 0 0 1-3 3 3 3 0 0 1-3-3H10a3 3 0 0 1-3 3 3 3 0 0 1-3-3H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h2l3-4h8z"/>
+                                        <circle cx="7" cy="16" r="1"/>
+                                        <circle cx="17" cy="16" r="1"/>
+                                    </svg>
+                                </div>
+                                <h3 class="side-category__title">Corridas e Desafios</h3>
+                            </div>
+                            
+                            <div class="side-category__content">
+                                <p class="side-category__description">Liberty City oferece várias competições e desafios que testam as habilidades de direção e tiro de Niko, oferecendo recompensas em dinheiro e desbloqueando novos recursos.</p>
+                                
+                                <div class="side-category__examples">
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Corridas de Brucie</h4>
+                                        <p class="side-mission__description">Após completar as missões de Brucie, Niko pode participar de corridas de rua ilegais organizadas por ele, competindo contra outros corredores por dinheiro.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">QUB3D</h4>
+                                        <p class="side-mission__description">Um mini-game de arcade encontrado em vários locais de Liberty City, similar ao Tetris, que oferece um desafio de quebra-cabeça.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Estandes de Tiro</h4>
+                                        <p class="side-mission__description">Disponíveis em duas localizações, os estandes de tiro oferecem desafios de precisão com diferentes armas, desbloqueando descontos em lojas de armas.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Helitours</h4>
+                                        <p class="side-mission__description">Niko pode participar de tours de helicóptero que oferecem vistas panorâmicas de Liberty City, ou até mesmo pilotar o helicóptero ele mesmo.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Colecionáveis -->
+                        <div class="side-category" data-aos="fade-up">
+                            <div class="side-category__header">
+                                <div class="side-category__icon">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                    </svg>
+                                </div>
+                                <h3 class="side-category__title">Colecionáveis</h3>
+                            </div>
+                            
+                            <div class="side-category__content">
+                                <p class="side-category__description">GTA IV inclui vários itens colecionáveis espalhados por Liberty City que incentivam a exploração completa do mapa e oferecem recompensas para quem os encontrar todos.</p>
+                                
+                                <div class="side-category__examples">
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Pombos Voadores</h4>
+                                        <p class="side-mission__description">Existem 200 pombos (chamados de "flying rats" no jogo) espalhados por Liberty City. Atirar em todos eles desbloqueia um helicóptero Annihilator no heliporto do apartamento de Niko.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Pacotes Escondidos</h4>
+                                        <p class="side-mission__description">Na expansão The Lost and Damned, existem 50 pacotes escondidos para coletar. Encontrar todos desbloqueia armas no esconderijo.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Gaivotas</h4>
+                                        <p class="side-mission__description">Na expansão The Ballad of Gay Tony, existem 50 gaivotas para atirar. Eliminar todas desbloqueia um parachute no apartamento de Luis.</p>
+                                    </div>
+                                    
+                                    <div class="side-mission">
+                                        <h4 class="side-mission__name">Acrobacias Únicas</h4>
+                                        <p class="side-mission__description">Existem 50 acrobacias únicas (saltos) espalhadas por Liberty City que Niko pode completar com veículos. Completar todas desbloqueia uma conquista/troféu.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Expansões -->
+        <section class="expansions" id="expansions">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Expansões</h2>
+                    <p class="section-header__subtitle">Histórias adicionais em Liberty City</p>
+                </header>
+                
+                <div class="expansions__content">
+                    <p class="expansions__intro" data-aos="fade-up">GTA IV recebeu duas expansões significativas que expandem o universo de Liberty City, apresentando novos protagonistas, histórias e mecânicas de jogo. Estas expansões são consideradas entre as melhores DLCs já lançadas para qualquer jogo, oferecendo experiências completas que se conectam com a história principal de Niko Bellic.</p>
+                    
+                    <div class="expansions__list">
+                        <!-- The Lost and Damned -->
+                        <div class="expansion" data-aos="fade-up">
+                            <div class="expansion__image">
+                                <!-- Placeholder para imagem de The Lost and Damned -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            
+                            <div class="expansion__content">
+                                <h3 class="expansion__title">The Lost and Damned</h3>
+                                <div class="expansion__release">Lançamento: Fevereiro de 2009</div>
+                                
+                                <p class="expansion__description">A primeira expansão de GTA IV coloca os jogadores no papel de Johnny Klebitz, vice-presidente do clube de motociclistas The Lost MC. A história se passa paralelamente aos eventos de GTA IV e explora a guerra de gangues entre The Lost e seus rivais, The Angels of Death, além dos conflitos internos dentro do próprio clube.</p>
+                                
+                                <div class="expansion__features">
+                                    <h4 class="expansion__features-title">Características Principais:</h4>
+                                    <ul class="expansion__features-list">
+                                        <li>Nova perspectiva de Liberty City através dos olhos de um motoqueiro</li>
+                                        <li>Mecânicas de jogo aprimoradas para motos, tornando-as mais estáveis e fáceis de controlar</li>
+                                        <li>Novas armas, incluindo a espingarda de cano serrado e a granada pipe bomb</li>
+                                        <li>Novas atividades secundárias, como corridas de moto e o jogo de cartas "Arm Wrestling"</li>
+                                        <li>Missões de guerra de gangues que podem ser repetidas</li>
+                                        <li>Trilha sonora expandida com novas estações de rádio focadas em rock pesado</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="expansion__connections">
+                                    <h4 class="expansion__connections-title">Conexões com GTA IV:</h4>
+                                    <p class="expansion__connections-text">Johnny aparece brevemente em GTA IV durante a missão "Blow Your Cover", onde Niko e Playboy X encontram ele e Niko durante uma negociação de drogas com Elizabeta Torres. The Lost and Damned expande esta cena, mostrando-a da perspectiva de Johnny. Várias outras missões de GTA IV são vistas de diferentes ângulos, criando uma narrativa entrelaçada.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- The Ballad of Gay Tony -->
+                        <div class="expansion" data-aos="fade-up">
+                            <div class="expansion__image">
+                                <!-- Placeholder para imagem de The Ballad of Gay Tony -->
+                                <div class="image-placeholder image-placeholder--wide"></div>
+                            </div>
+                            
+                            <div class="expansion__content">
+                                <h3 class="expansion__title">The Ballad of Gay Tony</h3>
+                                <div class="expansion__release">Lançamento: Outubro de 2009</div>
+                                
+                                <p class="expansion__description">A segunda expansão coloca os jogadores no papel de Luis Fernando Lopez, guarda-costas e sócio de "Gay" Tony Prince, dono de boates de luxo em Algonquin. A história explora o mundo glamouroso das boates de Liberty City, com celebridades, drogas e festas extravagantes, contrastando com o tom mais sombrio do jogo principal.</p>
+                                
+                                <div class="expansion__features">
+                                    <h4 class="expansion__features-title">Características Principais:</h4>
+                                    <ul class="expansion__features-list">
+                                        <li>Tom mais leve e colorido, retornando ao estilo mais exagerado de jogos anteriores da série</li>
+                                        <li>Novas atividades como dança nas boates, golfe e gerenciamento de boates</li>
+                                        <li>Novas armas avançadas, incluindo a metralhadora P-90 e a espingarda explosiva</li>
+                                        <li>Veículos de luxo exclusivos e um novo helicóptero de ataque (Buzzard)</li>
+                                        <li>Missões de paraquedismo e base jumping</li>
+                                        <li>Sistema de pontuação para missões, incentivando rejogabilidade</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="expansion__connections">
+                                    <h4 class="expansion__connections-title">Conexões com GTA IV:</h4>
+                                    <p class="expansion__connections-text">Luis aparece brevemente durante o assalto ao banco na missão "Three Leaf Clover" de GTA IV, sendo um dos reféns. The Ballad of Gay Tony mostra esta cena da perspectiva de Luis. A expansão também revela o destino de vários diamantes que aparecem em missões de GTA IV e The Lost and Damned, amarrando as três histórias em uma narrativa coesa.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="expansions__note" data-aos="fade-up">
+                        <h3 class="expansions__note-title">Episodes from Liberty City</h3>
+                        <p class="expansions__note-text">As duas expansões foram posteriormente lançadas juntas em um disco standalone chamado "Grand Theft Auto: Episodes from Liberty City", que não requer o jogo original GTA IV para ser jogado. Esta compilação oferece ambas as histórias completas, permitindo que jogadores experimentem diferentes perspectivas de Liberty City sem precisar do jogo base.</p>
+                        
+                        <p class="expansions__note-text">Juntas, as três histórias (GTA IV, The Lost and Damned e The Ballad of Gay Tony) formam uma narrativa entrelaçada que explora diferentes aspectos da vida em Liberty City, desde imigrantes buscando o sonho americano até gangues de motoqueiros e a vida noturna de luxo, criando um dos universos mais ricos e detalhados da história dos videogames.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Dicas e Estratégias -->
+        <section class="tips" id="tips">
+            <div class="container">
+                <header class="section-header">
+                    <h2 class="section-header__title">Dicas e Estratégias</h2>
+                    <p class="section-header__subtitle">Dominando as missões de GTA IV</p>
+                </header>
+                
+                <div class="tips-grid">
+                    <!-- Dica 1 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Use o Celular Estrategicamente</h3>
+                            <p class="tip-card__description">O celular de Niko é uma ferramenta essencial. Use-o para chamar táxis quando precisar se deslocar rapidamente, ligar para amigos para obter habilidades especiais (como o serviço de táxi grátis de Roman ou o desconto em armas de Little Jacob), e salvar o jogo ligando para o número de missão quando quiser tentar novamente.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 2 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Domine o Sistema de Cobertura</h3>
+                            <p class="tip-card__description">O sistema de cobertura é crucial para sobreviver em tiroteios. Sempre procure paredes, caixas ou carros para se proteger, e use o sistema de mira assistida para atingir inimigos rapidamente. Atire na cabeça para eliminar inimigos com um único tiro e economizar munição.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 3 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Mantenha Amizades</h3>
+                            <p class="tip-card__description">Manter boas relações com amigos como Roman, Little Jacob e Brucie desbloqueia habilidades especiais úteis. Aceite convites para atividades ocasionalmente, mas lembre-se que você pode recusar e ainda manter a amizade se ligar de volta em algumas horas para se desculpar.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 4 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Escolha o Veículo Certo</h3>
+                            <p class="tip-card__description">Diferentes missões exigem diferentes veículos. Para perseguições, use carros esportivos como o Comet ou Sultan RS. Para missões que exigem força bruta, prefira SUVs como o Cavalcade. Sempre tenha um bom carro guardado na garagem para emergências.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 5 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Explore Rotas Alternativas</h3>
+                            <p class="tip-card__description">Liberty City tem muitos atalhos e rotas alternativas. Use o GPS, mas não tenha medo de improvisar, especialmente durante perseguições policiais. Becos, escadas e túneis podem ser cruciais para escapar da polícia ou chegar mais rápido a um destino.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 6 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="600">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Gerencie seu Dinheiro</h3>
+                            <p class="tip-card__description">Dinheiro é importante em GTA IV, especialmente no início do jogo. Economize para comprar roupas melhores (que aumentam o respeito de seus encontros românticos) e armas. Complete missões secundárias como táxi ou vigilante para ganhar dinheiro extra quando precisar.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 7 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="700">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Salve Frequentemente</h3>
+                            <p class="tip-card__description">GTA IV não tem salvamento automático durante missões. Use apartamentos ou o celular para salvar regularmente, especialmente antes de missões difíceis ou escolhas importantes. Isso permite tentar diferentes abordagens sem perder progresso.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Dica 8 -->
+                    <div class="tip-card" data-aos="fade-up" data-aos-delay="800">
+                        <div class="tip-card__icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                                <path d="M12 8v4M12 16h.01"/>
+                            </svg>
+                        </div>
+                        <div class="tip-card__content">
+                            <h3 class="tip-card__title">Pense nas Consequências</h3>
+                            <p class="tip-card__description">As escolhas morais em GTA IV têm consequências reais. Pense cuidadosamente antes de decidir matar ou poupar certos personagens, pois isso pode afetar missões futuras, recompensas e até mesmo o final do jogo. Algumas escolhas oferecem benefícios imediatos, mas consequências negativas a longo prazo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção CTA -->
+        <section class="cta" id="cta">
+            <div class="container">
+                <div class="cta__content">
+                    <h2 class="cta__title">Explore a Galeria de GTA IV</h2>
+                    <p class="cta__text">Veja imagens dos momentos mais icônicos, personagens e locais de Liberty City.</p>
+                    <div class="cta__actions">
+                        <a href="gallery.html" class="btn btn--primary btn--large">Ver Galeria</a>
+                        <a href="index.html" class="btn btn--outline btn--large">Voltar ao Início</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção de Chat Bot -->
+        <div class="chat-bot" id="chatBot">
+            <button class="chat-bot__toggle" aria-label="Abrir chat" aria-expanded="false">
+                <svg class="chat-bot__icon chat-bot__icon--open" viewBox="0 0 24 24">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <svg class="chat-bot__icon chat-bot__icon--close" viewBox="0 0 24 24">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <div class="chat-bot__container">
+                <div class="chat-bot__header">
+                    <h3 class="chat-bot__title">Roman Bellic</h3>
+                </div>
+                
+                <div class="chat-bot__messages">
+                    <div class="chat-message chat-message--bot">
+                        <div class="chat-message__content">
+                            <p>Hey, cousin! It's Roman. Want to go bowling?</p>
+                        </div>
+                        <time class="chat-message__time">Agora</time>
+                    </div>
+                </div>
+                
+                <form class="chat-bot__input-area">
+                    <input type="text" class="chat-bot__input" placeholder="Responder a Roman..." aria-label="Responder a Roman">
+                    <button type="submit" class="chat-bot__send" aria-label="Enviar mensagem">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--about">
+                    <div class="footer__logo">
+                        <a href="index.html" class="logo logo--footer">
+                            <span class="logo__text">GTA<span class="logo__highlight">IV</span></span>
+                        </a>
+                    </div>
+                    <p class="footer__description">Um site dedicado ao universo de Grand Theft Auto IV, explorando a história, personagens, mundo aberto e todos os aspectos que tornaram este jogo um marco na história dos videogames.</p>
+                    <div class="footer__social">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer__column footer__column--links">
+                    <h3 class="footer__heading">Links Rápidos</h3>
+                    <ul class="footer__links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="story.html">História</a></li>
+                        <li><a href="characters.html">Personagens</a></li>
+                        <li><a href="world.html">Mundo Aberto</a></li>
+                        <li><a href="vehicles.html">Veículos</a></li>
+                        <li><a href="missions.html">Missões</a></li>
+                        <li><a href="gallery.html">Galeria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--resources">
+                    <h3 class="footer__heading">Recursos</h3>
+                    <ul class="footer__links">
+                        <li><a href="#">Guia de Missões</a></li>
+                        <li><a href="#">Mapa Interativo</a></li>
+                        <li><a href="#">Conquistas</a></li>
+                        <li><a href="#">Easter Eggs</a></li>
+                        <li><a href="#">Curiosidades</a></li>
+                        <li><a href="#">Trilha Sonora</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__column footer__column--legal">
+                    <h3 class="footer__heading">Informações Legais</h3>
+                    <p class="footer__legal">Este é um site não oficial dedicado a Grand Theft Auto IV. GTA, Grand Theft Auto e todos os elementos relacionados são marcas registradas e propriedade intelectual da Rockstar Games e Take-Two Interactive.</p>
+                    <p class="footer__legal">Este site foi criado por fãs e não tem nenhuma afiliação oficial com a Rockstar Games ou Take-Two Interactive.</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2025 Site GTA IV. Todos os direitos reservados.</p>
+                <p class="footer__credits">Desenvolvido com <span class="footer__heart">❤</span> por Manus</p>
+            </div>
+        </div>
+        
+        <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="assets/js/utils.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/animations.js" defer></script>
+    <script src="assets/js/theme-switcher.js" defer></script>
+    <script src="assets/js/character-dialog.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
